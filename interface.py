@@ -25,7 +25,7 @@ def oak_intro():
 
     print_char(intro_text5)
 
-    player_name = input()
+    player_name = str(raw_input())
 
     print_char("\n     Right! So your name is "+player_name+"!\n\n")
     print_char("     "+player_name+"!\n     Your very own POKeMON legend is about to unfold!\n"\

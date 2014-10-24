@@ -12,18 +12,26 @@ class Pokemon(object):
         while(sure == "No"):
             #Set your POKeMON's name
             print_char("\nPlease, enter with the desired POKeMON:\n")
-            name = str(input())
-            
+            name = str(raw_input())
+
             #Set your POKeMON's level
-            print_char("\nWhat is its level?\n")
-            level = int(input())
-            print()
+            level = -1
+            while level == -1:
+                print_char("\nWhat is its level?\n")
+                try:
+                    level = int(raw_input())
+                    if level < 0 or level > 99:
+                        level = -1
+                        print "\nInvalid number. The level must be a number from 1 to 99. Let's retry this.\n"
+                except ValueError:
+                    print "\nNot a number. Let's retry this.\n"
+            
             #Set your POKeMON's type(s)
             print_char("\nWhat is its first type?\n")
-            type1 = str(input())
+            type1 = str(raw_input())
             print_char("\nIf it does have a second type, which one is it?"\
                        " If it has only one type, type 'Blank'.\n(Sorry for the pun)\n")
-            type2 = str(input())
+            type2 = str(raw_input())
             
             #Set your POKeMON status, please use the official status
             print_char("\nNow let's set your POKeMON's status!\n")
