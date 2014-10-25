@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 from os import system
@@ -25,7 +25,7 @@ def oak_intro():
 
     print_char(intro_text5)
 
-    player_name = str(raw_input())
+    player_name = input()
 
     print_char("\n     Right! So your name is "+player_name+"!\n\n")
     print_char("     "+player_name+"!\n     Your very own POKeMON legend is about to unfold!\n"\

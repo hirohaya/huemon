@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import moves
@@ -16,7 +16,7 @@ class Pokemon(object):
             types = None
             while name == None:
                 print_char("\nPlease, enter with the desired POKeMON:\n")
-                name = str(raw_input())
+                name = input()
                 get_dictionary = pokemon_choice(name.capitalize())
                 if  get_dictionary == None:
                     name = None
@@ -35,7 +35,7 @@ class Pokemon(object):
             while level == -1:
                 print_char("\nWhat is its level?\n")
                 try:
-                    level = int(raw_input())
+                    level = int(input())
                     if level < 0 or level > 99:
                         level = -1
                         print_char("\nInvalid number. The level must be a number from 1 to 99. Let's retry this.\n")
@@ -47,19 +47,19 @@ class Pokemon(object):
             
             #Set HP
             print_char("\nHow much HP?\n")
-            hp = int(raw_input())
+            hp = int(input())
             #Set Attack
             print_char("\nHow much Attack?\n")
-            attack = int(raw_input())
+            attack = int(input())
             #Set Defense
             print_char("\nHow much Defense?\n")
-            defense = int(raw_input())
+            defense = int(input())
             #Set Special
             print_char("\nHow much Special?\n")
-            special = int(raw_input())
+            special = int(input())
             #Set Speed
             print_char("\nHow much Speed?\n")
-            speed = int(raw_input())
+            speed = int(input())
             
             #Display the newborn POKeMON's info
             print_char("\nYour POKeMON status are:\n\n")
@@ -73,7 +73,7 @@ class Pokemon(object):
             #Check if user is sure about his options
             decision = "No"
             while decision.capitalize() == "No":
-                decision = raw_input() 
+                decision = input() 
                 #User is not sure
                 if(decision.capitalize() == "No"):
                     print_char("\nOk, let's do it again...\n\n")
