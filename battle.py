@@ -25,9 +25,9 @@ class Battle(object):
             pokemon1 = pokemon2
             pokemon2 = pokemon_tmp
         while True:
-           pokemon1.perform_attack(pokemon2)
+           pokemon1.perform_attack(pokemon1, pokemon2)
            if pokemon2.is_defeated:
                pass #end battle
-           pokemon2.perform_attack(pokemon1)
+           pokemon2.perform_attack(pokemon2, pokemon1)
            if pokemon1.is_defeated:
                pass #end battle
