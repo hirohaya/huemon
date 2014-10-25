@@ -2,11 +2,15 @@
 # -*- coding: utf-8 -*-
 
 #Defines pokemon's moves	
-#class Moves(object):
+class Moves(object):
     #Set move name by inicialization
-#    def __init__(self, name):
-#        self.name = name
-#            
+    def __init__(self, move_name, move_type, move_pp, move_power, move_acc):
+        self.move_name  = move_name
+        self.move_type  = move_type
+        self.move_pp    = move_pp
+        self.move_power = move_power
+        self.move_acc   = move_acc 
+            
     #Set move type, in the future this will determine if the move will be super effective or not
 #    def type(self, type):
 #        if self.name == "No move":

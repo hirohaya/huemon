@@ -52,11 +52,11 @@ class Pokemon(object):
             print_char("\nTo choose a skill, type its name using your keyboard. You will have to choose 4 skills for your pokemon.\n")
             while i < 5:
                 if i == 0:
-                    move0 = 'Struggle'
-                    type_move0 = 'Normal'
-                    pp_move0 = 1
-                    power_move0 = 50
-                    accuracy_move0 = 100
+                    move0_name = 'Struggle'
+                    move0_type = 'Normal'
+                    move0_pp = 1
+                    move0_power = 50
+                    move0_accuracy = 100
                     i = i + 1
                     continue
                 elif i == 1:
@@ -176,10 +176,10 @@ class Pokemon(object):
             print()
             print("\tHP: %d\n\tAttack: %d\n\tDefense: %d\n\tSpecial: %d\n\tSpeed: %d" %(hp, attack, defense, special, speed))
             print()
-            print("Move 1: "+move1_name+": ("+move1_type+"/"+str(move1_pp)+"/"+str(move1_power)+"/"+str(move1_accuracy)+")\n")
-            print("Move 2: "+move2_name+": ("+move2_type+"/"+str(move2_pp)+"/"+str(move2_power)+"/"+str(move2_accuracy)+")\n")
-            print("Move 3: "+move3_name+": ("+move3_type+"/"+str(move3_pp)+"/"+str(move3_power)+"/"+str(move3_accuracy)+")\n")
-            print("Move 4: "+move4_name+": ("+move4_type+"/"+str(move4_pp)+"/"+str(move4_power)+"/"+str(move4_accuracy)+")\n")
+            print("\tMove 1: "+move1_name+": ("+move1_type+"/"+str(move1_pp)+"/"+str(move1_power)+"/"+str(move1_accuracy)+")\n")
+            print("\tMove 2: "+move2_name+": ("+move2_type+"/"+str(move2_pp)+"/"+str(move2_power)+"/"+str(move2_accuracy)+")\n")
+            print("\tMove 3: "+move3_name+": ("+move3_type+"/"+str(move3_pp)+"/"+str(move3_power)+"/"+str(move3_accuracy)+")\n")
+            print("\tMove 4: "+move4_name+": ("+move4_type+"/"+str(move4_pp)+"/"+str(move4_power)+"/"+str(move4_accuracy)+")\n")
             print()
             print_char("Do you want to continue?\n(Yes or No)\n")
             #Check if user is sure about his options
@@ -203,6 +203,13 @@ class Pokemon(object):
                     self.defense = defense
                     self.special = special
                     self.speed = speed
+
+                    #Set Moves
+                    self.move0 = moves.Moves(move0_name, move0_type, move0_pp, move0_power, move0_accuracy) #Struggle
+                    self.move1 = moves.Moves(move1_name, move1_type, move1_pp, move1_power, move1_accuracy)
+                    self.move2 = moves.Moves(move2_name, move2_type, move2_pp, move2_power, move2_accuracy)
+                    self.move3 = moves.Moves(move3_name, move3_type, move3_pp, move3_power, move3_accuracy)
+                    self.move4 = moves.Moves(move4_name, move4_type, move4_pp, move4_power, move4_accuracy)
                     print_char("\nOk! Your POKeMON has been created! Let's continue!\n\n")
                     sure = "Yes"
                     decision = "Yes"
