@@ -98,14 +98,6 @@ class Pokemon(object):
                 else:
                     print_char("\nWell... I was expecting for a Yes or a No, so please, don't make the things hard and answer my question, I don't have all day.\n")
                     decision = "No"
-
-    ##Set the pokemon's status
-    #def status(self, hp, attack, defense, special, speed):
-    #    self.hp = hp
-    #    self.attack = attack
-    #    self.defense = defense
-    #    self.special = special
-    #    self.speed = speed
         
     #Set the pokemon's moves, moves are objects of Moves type for a better organization
     def moves(self, name1, name2, name3, name4):
@@ -123,7 +115,7 @@ class Pokemon(object):
         else:
             return False
 
-    def attack(self, opponent):
+    def perform_attack(self, opponent):
         # this is just an incomplete draft
         print("Choose the attack:")
         self.calculate_damage(attack)

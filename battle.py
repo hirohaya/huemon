@@ -2,10 +2,12 @@
 # -*- coding: utf-8 -*-
 
 from pokemon import Pokemon
+from pprint import pprint
 
 class Battle(object):
     def __init__(self):
         pokemon1, pokemon2 = self.initialize_pokemons()
+        #pprint(vars(pokemon1))
         self.begin_battle(pokemon1, pokemon2)
         pass
 
@@ -23,9 +25,9 @@ class Battle(object):
             pokemon1 = pokemon2
             pokemon2 = pokemon_tmp
         while True:
-           pokemon1.attack(pokemon2)
+           pokemon1.perform_attack(pokemon2)
            if pokemon2.is_defeated:
                pass #end battle
-           pokemon2.attack(pokemon1)
+           pokemon2.perform_attack(pokemon1)
            if pokemon1.is_defeated:
                pass #end battle
