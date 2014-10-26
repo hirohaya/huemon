@@ -207,9 +207,13 @@ class Pokemon(object):
                     #Set Moves
                     self.move0 = moves.Moves(move0_name, move0_type, move0_pp, move0_power, move0_accuracy) #Struggle
                     self.move1 = moves.Moves(move1_name, move1_type, move1_pp, move1_power, move1_accuracy)
+                    self.move1_remaining_pp = move1_pp
                     self.move2 = moves.Moves(move2_name, move2_type, move2_pp, move2_power, move2_accuracy)
+                    self.move2_remaining_pp = move2_pp
                     self.move3 = moves.Moves(move3_name, move3_type, move3_pp, move3_power, move3_accuracy)
+                    self.move3_remaining_pp = move3_pp
                     self.move4 = moves.Moves(move4_name, move4_type, move4_pp, move4_power, move4_accuracy)
+                    self.move4_remaining_pp = move4_pp
                     print_char("\nOk! Your POKeMON has been created! Let's continue!\n\n")
                     sure = "Yes"
                     decision = "Yes"
@@ -235,18 +239,47 @@ class Pokemon(object):
             return False
 
     def perform_attack(self, attacker, opponent):
-        # this is just an incomplete draft
-        print("Choose the attack:")
-        # here goes the moves
+        #The user will choose his skill
+        option = -1
+        if attacker.move1_remaining_pp == 0 and attacker.move2_remaining_pp == 0 and attacker.move3_remaining_pp == 0 and attacker.move4_remaining_pp == 0:
+            print("Your pokemon have no more PP left and will use Struggle!\n\n")
+            option = 0
 
-        # here we finally calculate the attack action damage
-        self.calculate_damage(attacker.level, attacker.attack, opponent.defense)
+        while option == -1:
+            print("Choose the attack:\n\n")
+            print("1. "+attacker.move1.move_name+"("+str(attacker.move1_remaining_pp)+"/"+str(attacker.move1.move_pp)+")")
+            print("2. "+attacker.move2.move_name+"("+str(attacker.move2_remaining_pp)+"/"+str(attacker.move2.move_pp)+")")
+            print("3. "+attacker.move3.move_name+"("+str(attacker.move3_remaining_pp)+"/"+str(attacker.move3.move_pp)+")")
+            print("4. "+attacker.move4.move_name+"("+str(attacker.move4_remaining_pp)+"/"+str(attacker.move4.move_pp)+")")
+            try:
+                option = int(input())
+                if  option <= 0 or option >= 5:
+                    level = -1
+                    print_char("\nInvalid option! Type a number from 1 to 4.\n")
+            except ValueError:
+                print_char("\nInvalid option! Type a number from 1 to 4.\n")
+        #Here we finally calculate the attack action damage
+        if option == 0:
+            damage = self.calculate_damage(attacker.level, attacker.attack, opponent.defense, attacker.move0)
+        elif option == 1:
+            damage = self.calculate_damage(attacker.level, attacker.attack, opponent.defense, attacker.move1)
+            attacker.move1_remaining_pp = attacker.move1_remaining_pp - 1
+        elif option == 2:
+            damage = self.calculate_damage(attacker.level, attacker.attack, opponent.defense, attacker.move2)
+            attacker.move2_remaining_pp = attacker.move2_remaining_pp - 1
+        elif option == 3:
+            damage = self.calculate_damage(attacker.level, attacker.attack, opponent.defense, attacker.move3)
+            attacker.move3_remaining_pp = attacker.move3_remaining_pp - 1
+        elif option == 4:
+            damage = self.calculate_damage(attacker.level, attacker.attack, opponent.defense, attacker.move4)
+            attacker.move4_remaining_pp = attacker.move4_remaining_pp - 1
         opponent.subtract_damage(damage)
+        #TODO: Aqui tem um if option == 0 e dentro do bloco o Pokemon atacante perde HP de acordo com o efeito da skill Struggle
         pass
 
-    def calculate_damage(self, attacker_level, attacker_attack, defender_defense):
+    def calculate_damage(self, attacker_level, attacker_attack, defender_defense, selected_move):
         # here goes the formula
-        base = 10 #will be deleted. Base is supposed to be "the base damage of the attack"
+        base = selected_move.move_power
         modifier = 2 #same
-        (((2 * level) + 10) / 250) * (attacker_attack / attacker.defense) * base + 2
-        pass
+        damage = (((2 * level) + 10) / 250) * (attacker_attack / attacker.defense) * base + 2
+        return damage
