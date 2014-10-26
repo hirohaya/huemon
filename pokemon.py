@@ -224,11 +224,14 @@ class Pokemon(object):
 
     def subtract_damage(self, damage):
         self.hp -= damage
+        if self.hp <= 0: self.hp = 0
 
 
     def is_defeated(self):
-        if self.hp <= 0: return True
-        else: return False
+        if self.hp == 0:
+            return True
+        else:
+            return False
 
 
     def perform_attack(self, opponent):

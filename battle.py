@@ -29,12 +29,14 @@ class Battle(object):
         while True:
            pokemon1.perform_attack(pokemon2)
            self.print_battle_status(pokemon1, pokemon2)
-           if pokemon2.is_defeated:
-               pass #end battle
+           if pokemon2.is_defeated():
+               print("\nIt's over! " + pokemon1.name + " wins the battle!")
+               return
            pokemon2.perform_attack(pokemon1)
            self.print_battle_status(pokemon1, pokemon2)
-           if pokemon1.is_defeated:
-               pass #end battle
+           if pokemon1.is_defeated():
+               print("\nIt's over! " + pokemon2.name + " wins the battle!")
+               return
 
 
     def print_battle_status(self, pokemon1, pokemon2):
