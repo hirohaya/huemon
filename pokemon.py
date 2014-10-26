@@ -204,15 +204,11 @@ class Pokemon(object):
                     self.speed = speed
 
                     #Set Moves
-                    self.move0 = moves.Moves(move0_name, move0_type, move0_pp, move0_power, move0_accuracy) #Struggle
-                    self.move1 = moves.Moves(move1_name, move1_type, move1_pp, move1_power, move1_accuracy)
-                    self.move1_remaining_pp = move1_pp
-                    self.move2 = moves.Moves(move2_name, move2_type, move2_pp, move2_power, move2_accuracy)
-                    self.move2_remaining_pp = move2_pp
-                    self.move3 = moves.Moves(move3_name, move3_type, move3_pp, move3_power, move3_accuracy)
-                    self.move3_remaining_pp = move3_pp
-                    self.move4 = moves.Moves(move4_name, move4_type, move4_pp, move4_power, move4_accuracy)
-                    self.move4_remaining_pp = move4_pp
+                    self.move0 = moves.Moves(move0_name, move0_type, move0_pp, move0_power, move0_accuracy, move0_pp) #Struggle
+                    self.move1 = moves.Moves(move1_name, move1_type, move1_pp, move1_power, move1_accuracy, move1_pp)
+                    self.move2 = moves.Moves(move2_name, move2_type, move2_pp, move2_power, move2_accuracy, move2_pp)
+                    self.move3 = moves.Moves(move3_name, move3_type, move3_pp, move3_power, move3_accuracy, move3_pp)
+                    self.move4 = moves.Moves(move4_name, move4_type, move4_pp, move4_power, move4_accuracy, move4_pp)
                     print_char("\nOk! Your POKeMON has been created! Let's continue!\n\n")
                     sure = "Yes"
                     decision = "Yes"
@@ -237,17 +233,17 @@ class Pokemon(object):
     def perform_attack(self, opponent):
         #The user will choose his skill
         option = -1
-        if self.move1_remaining_pp == 0 and self.move2_remaining_pp == 0 and self.move3_remaining_pp == 0 and self.move4_remaining_pp == 0:
+        if self.move1.remaining_pp == 0 and self.move2.remaining_pp == 0 and self.move3.remaining_pp == 0 and self.move4.remaining_pp == 0:
             print("Your pokemon have no more PP left and will use Struggle!\n\n")
             option = 0
 
         while option == -1:
             print("It's " + self.name + "'s turn!")
             print("Attacks:")
-            print("1. "+self.move1.move_name+" ("+str(self.move1_remaining_pp)+"/"+str(self.move1.move_pp)+")")
-            print("2. "+self.move2.move_name+" ("+str(self.move2_remaining_pp)+"/"+str(self.move2.move_pp)+")")
-            print("3. "+self.move3.move_name+" ("+str(self.move3_remaining_pp)+"/"+str(self.move3.move_pp)+")")
-            print("4. "+self.move4.move_name+" ("+str(self.move4_remaining_pp)+"/"+str(self.move4.move_pp)+")")
+            print("1. "+self.move1.move_name+" ("+str(self.move1.remaining_pp)+"/"+str(self.move1.move_pp)+")")
+            print("2. "+self.move2.move_name+" ("+str(self.move2.remaining_pp)+"/"+str(self.move2.move_pp)+")")
+            print("3. "+self.move3.move_name+" ("+str(self.move3.remaining_pp)+"/"+str(self.move3.move_pp)+")")
+            print("4. "+self.move4.move_name+" ("+str(self.move4.remaining_pp)+"/"+str(self.move4.move_pp)+")")
             print("Choose the attack:")
             try:
                 option = int(input())
@@ -261,16 +257,16 @@ class Pokemon(object):
             damage = self.calculate_damage(self.move0, opponent)
         elif option == 1:
             damage = self.calculate_damage(self.move1, opponent)
-            self.move1_remaining_pp = self.move1_remaining_pp - 1
+            self.move1.remaining_pp = self.move1.remaining_pp - 1
         elif option == 2:
             damage = self.calculate_damage(self.move2, opponent)
-            self.move2_remaining_pp = self.move2_remaining_pp - 1
+            self.move2.remaining_pp = self.move2.remaining_pp - 1
         elif option == 3:
             damage = self.calculate_damage(self.move3, opponent)
-            self.move3_remaining_pp = self.move3_remaining_pp - 1
+            self.move3.remaining_pp = self.move3.remaining_pp - 1
         elif option == 4:
             damage = self.calculate_damage(self.move4, opponent)
-            self.move4_remaining_pp = self.move4_remaining_pp - 1
+            self.move4.remaining_pp = self.move4.remaining_pp - 1
         opponent.subtract_damage(damage)
         print(self.name + " inflicted " + str(damage) + " points of damage in " + opponent.name + "!")
         #TODO: Aqui tem um if option == 0 e dentro do bloco o Pokemon atacante perde HP de acordo com o efeito da skill Struggle
