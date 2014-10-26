@@ -2,12 +2,10 @@
 # -*- coding: utf-8 -*-
 
 from pokemon import Pokemon
-from pprint import pprint
 
 class Battle(object):
     def __init__(self):
         pokemon1, pokemon2 = self.initialize_pokemons()
-        pprint(vars(pokemon1))
         self.begin_battle(pokemon1, pokemon2)
 
 
