@@ -164,3 +164,15 @@ def pokemon_choice(pokemon_name):
 		if i == pokemon_name:
 			return {i: pkmn_list[i]}
 	return None
+
+
+def pokemon_type(pokemon_name):
+    pkmn_list = pokedex()
+    for i in pkmn_list:
+        if i == pokemon_name:
+            types = pkmn_list[i]
+            split_string = types.split('/')
+            type1 = split_string[0]
+            type2 = split_string[1]
+            return type1, type2
+    return None

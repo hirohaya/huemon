@@ -135,4 +135,15 @@ def move_choice(choosen_move):
     for i in moves_list:
         if i == choosen_move:
             return {i: moves_list[i]}
+    return None 
+
+def move_type(move):
+    moves_list = pokemon_moves_list()
+
+    for i in moves_list:
+        if i == move:
+            attributes = moves_list[i]
+            split_string = attribute.split('/')
+            type = split_string[0]
+            return type
     return None

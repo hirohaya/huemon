@@ -31,5 +31,5 @@ def oak_intro():
     print_char("     "+player_name+"!\n     Your very own POKeMON legend is about to unfold!\n"\
                "     A world of dreams and adventures with POKeMON awaits! Let's go!\n\n")
             
-    sleep(3)
-    system('clear')
+    #sleep(3)
+    #system('clear')

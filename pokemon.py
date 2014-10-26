@@ -3,13 +3,12 @@
 
 import moves
 from moves import print_moves, move_choice
-from pokedex import pokedex, pokemon_choice
+from pokedex import pokedex, pokemon_choice, pokemon_type
 from myfunctions import print_char
 
 class Pokemon(object):
     #Set the pokemon's name at the inicialization
     def __init__(self):
-        print_char("Let's start by creating your POKeMON!\n")
         sure = "No"
         while(sure == "No"):
             #Set your POKeMON's name and its respective types
@@ -62,7 +61,7 @@ class Pokemon(object):
                 elif i == 1:
                     print_char("\nOk, now select your pokemons "+str(i)+"st skill.\n")
                     move1 = input()
-                    get_dictionary = move_choice(move1.capitalize())
+                    get_dictionary = move_choice(move1)
                     if get_dictionary == None:
                         print_char("\nThere's no such skill. Let's retry this. Select your pokemons "+str(i)+"st skill.\n")
                     else:
@@ -83,7 +82,7 @@ class Pokemon(object):
                 elif i == 2:
                     print_char("\nNow select your pokemons "+str(i)+"nd skill.\n")
                     move2 = input()
-                    get_dictionary = move_choice(move2.capitalize())
+                    get_dictionary = move_choice(move2)
                     if get_dictionary == None:
                         print_char("\nThere's no such skill. Let's retry this. Select your pokemons "+str(i)+"nd skill.\n")
                     else:
@@ -106,7 +105,7 @@ class Pokemon(object):
                 elif i == 3:
                     print_char("\nNow for your pokemons "+str(i)+"rd skill.\n")
                     move3 = input()
-                    get_dictionary = move_choice(move3.capitalize())
+                    get_dictionary = move_choice(move3)
                     if get_dictionary == None:
                         print_char("\nThere's no such skill. Let's retry this. Select your pokemons "+str(i)+"rd skill.\n")
                     else:
@@ -129,7 +128,7 @@ class Pokemon(object):
                 else:
                     print_char("\nNow for your pokemons "+str(i)+"th and last skill.\n")
                     move4 = input()
-                    get_dictionary = move_choice(move4.capitalize())
+                    get_dictionary = move_choice(move4)
                     if get_dictionary == None:
                         print_char("\nThere's no such skill. Let's retry this. Select your pokemons "+str(i)+"th skill.\n")
                     else:
@@ -151,7 +150,7 @@ class Pokemon(object):
                             print_char("\nYour pokemon is of types "+type1+"/"+type2+" and can't learn the skill "+move4_name+" of type "+move4_type+".\n")
             #Set your POKeMON status, please use the official status
             print_char("\nNow let's set your POKeMON's status!\n")
-            
+
             #Set HP
             print_char("\nHow much HP?\n")
             hp = int(input())
@@ -167,7 +166,7 @@ class Pokemon(object):
             #Set Speed
             print_char("\nHow much Speed?\n")
             speed = int(input())
-            
+
             #Display the newborn POKeMON's info
             print_char("\nYour POKeMON status are:\n\n")
             print("\tName: "+name+" (Level %d)" %level)
@@ -185,7 +184,7 @@ class Pokemon(object):
             #Check if user is sure about his options
             decision = "No"
             while decision.capitalize() == "No":
-                decision = input() 
+                decision = input()
                 #User is not sure
                 if(decision.capitalize() == "No"):
                     print_char("\nOk, let's do it again...\n\n")
@@ -196,7 +195,7 @@ class Pokemon(object):
                     self.level = level
                     self.type1 = type1
                     self.type2 = type2
-                    
+
                     #Set status on constructor
                     self.hp = hp
                     self.attack = attack
@@ -221,36 +220,32 @@ class Pokemon(object):
                 else:
                     print_char("\nWell... I was expecting for a Yes or a No, so please, don't make the things hard and answer my question, I don't have all day.\n")
                     decision = "No"
-        
-    #Set the pokemon's moves, moves are objects of Moves type for a better organization
-    #def moves(self, name1, name2, name3, name4):
-    #    self.move1 = moves.Moves(name1)
-    #    self.move2 = moves.Moves(name2)
-    #    self.move3 = moves.Moves(name3)
-    #    self.move4 = moves.Moves(name4)
+
 
     def subtract_damage(self, damage):
         self.hp -= damage
 
-    def is_defeated(self):
-        if self.hp <= 0:
-            return True
-        else:
-            return False
 
-    def perform_attack(self, attacker, opponent):
+    def is_defeated(self):
+        if self.hp <= 0: return True
+        else: return False
+
+
+    def perform_attack(self, opponent):
         #The user will choose his skill
         option = -1
-        if attacker.move1_remaining_pp == 0 and attacker.move2_remaining_pp == 0 and attacker.move3_remaining_pp == 0 and attacker.move4_remaining_pp == 0:
+        if self.move1_remaining_pp == 0 and self.move2_remaining_pp == 0 and self.move3_remaining_pp == 0 and self.move4_remaining_pp == 0:
             print("Your pokemon have no more PP left and will use Struggle!\n\n")
             option = 0
 
         while option == -1:
-            print("Choose the attack:\n\n")
-            print("1. "+attacker.move1.move_name+"("+str(attacker.move1_remaining_pp)+"/"+str(attacker.move1.move_pp)+")")
-            print("2. "+attacker.move2.move_name+"("+str(attacker.move2_remaining_pp)+"/"+str(attacker.move2.move_pp)+")")
-            print("3. "+attacker.move3.move_name+"("+str(attacker.move3_remaining_pp)+"/"+str(attacker.move3.move_pp)+")")
-            print("4. "+attacker.move4.move_name+"("+str(attacker.move4_remaining_pp)+"/"+str(attacker.move4.move_pp)+")")
+            print("It's " + self.name + "'s turn!")
+            print("Attacks:")
+            print("1. "+self.move1.move_name+" ("+str(self.move1_remaining_pp)+"/"+str(self.move1.move_pp)+")")
+            print("2. "+self.move2.move_name+" ("+str(self.move2_remaining_pp)+"/"+str(self.move2.move_pp)+")")
+            print("3. "+self.move3.move_name+" ("+str(self.move3_remaining_pp)+"/"+str(self.move3.move_pp)+")")
+            print("4. "+self.move4.move_name+" ("+str(self.move4_remaining_pp)+"/"+str(self.move4.move_pp)+")")
+            print("Choose the attack:")
             try:
                 option = int(input())
                 if  option <= 0 or option >= 5:
@@ -260,26 +255,31 @@ class Pokemon(object):
                 print_char("\nInvalid option! Type a number from 1 to 4.\n")
         #Here we finally calculate the attack action damage
         if option == 0:
-            damage = self.calculate_damage(attacker.level, attacker.attack, opponent.defense, attacker.move0)
+            damage = self.calculate_damage(self.move0, opponent)
         elif option == 1:
-            damage = self.calculate_damage(attacker.level, attacker.attack, opponent.defense, attacker.move1)
-            attacker.move1_remaining_pp = attacker.move1_remaining_pp - 1
+            damage = self.calculate_damage(self.move1, opponent)
+            self.move1_remaining_pp = self.move1_remaining_pp - 1
         elif option == 2:
-            damage = self.calculate_damage(attacker.level, attacker.attack, opponent.defense, attacker.move2)
-            attacker.move2_remaining_pp = attacker.move2_remaining_pp - 1
+            damage = self.calculate_damage(self.move2, opponent)
+            self.move2_remaining_pp = self.move2_remaining_pp - 1
         elif option == 3:
-            damage = self.calculate_damage(attacker.level, attacker.attack, opponent.defense, attacker.move3)
-            attacker.move3_remaining_pp = attacker.move3_remaining_pp - 1
+            damage = self.calculate_damage(self.move3, opponent)
+            self.move3_remaining_pp = self.move3_remaining_pp - 1
         elif option == 4:
-            damage = self.calculate_damage(attacker.level, attacker.attack, opponent.defense, attacker.move4)
-            attacker.move4_remaining_pp = attacker.move4_remaining_pp - 1
+            damage = self.calculate_damage(self.move4, opponent)
+            self.move4_remaining_pp = self.move4_remaining_pp - 1
         opponent.subtract_damage(damage)
+        print(self.name + " inflicted " + str(damage) + " points of damage in " + opponent.name + "!")
         #TODO: Aqui tem um if option == 0 e dentro do bloco o Pokemon atacante perde HP de acordo com o efeito da skill Struggle
-        pass
 
-    def calculate_damage(self, attacker_level, attacker_attack, defender_defense, selected_move):
-        # here goes the formula
-        base = selected_move.move_power
-        modifier = 2 #same
-        damage = (((2 * level) + 10) / 250) * (attacker_attack / attacker.defense) * base + 2
+
+    def calculate_damage(self, move, opponent):
+        #TODO: pokemon_type tá dando erro
+        #opponent_type1, opponent_type2 = pokemon_type(opponent.name)
+        #if opponent_type1 == attack_type or opponent_type2 == move.move_type: stab = 1.5
+        #else: stab = 1.0
+        stab = 1.0
+        modifier = stab #incomplete
+
+        damage = int(((((2 * self.level) + 10) / 250) * (self.attack / self.defense) * move.move_power + 2) * modifier)
         return damage

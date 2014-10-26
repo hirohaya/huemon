@@ -5,4 +5,4 @@ from time import sleep
 def print_char(text):
     for char in text:
         stdout.write(char)
-        sleep(0.01)
+#        sleep(0.01)
