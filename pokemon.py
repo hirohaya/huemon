@@ -17,7 +17,7 @@ class Pokemon(object):
             while name == None:
                 print("\nPlease, enter with the desired POKeMON:\n")
                 name = input()
-                get_dictionary = pokemon_choice(name.capitalize())
+                get_dictionary = pokemon_choice(name.title())
                 if  get_dictionary == None:
                     name = None
                     print("\nInvalid name. Type a name of a pokemon from the first generation.\n")
@@ -61,7 +61,7 @@ class Pokemon(object):
                 elif i == 1:
                     print("\nOk, now select your pokemons "+str(i)+"st skill.\n")
                     move1 = input()
-                    get_dictionary = move_choice(move1)
+                    get_dictionary = move_choice(move1.title())
                     if get_dictionary == None:
                         print("\nThere's no such skill. Let's retry this. Select your pokemons "+str(i)+"st skill.\n")
                     else:
@@ -82,7 +82,7 @@ class Pokemon(object):
                 elif i == 2:
                     print("\nNow select your pokemons "+str(i)+"nd skill.\n")
                     move2 = input()
-                    get_dictionary = move_choice(move2)
+                    get_dictionary = move_choice(move2.title())
                     if get_dictionary == None:
                         print("\nThere's no such skill. Let's retry this. Select your pokemons "+str(i)+"nd skill.\n")
                     else:
@@ -105,7 +105,7 @@ class Pokemon(object):
                 elif i == 3:
                     print("\nNow for your pokemons "+str(i)+"rd skill.\n")
                     move3 = input()
-                    get_dictionary = move_choice(move3)
+                    get_dictionary = move_choice(move3.title())
                     if get_dictionary == None:
                         print("\nThere's no such skill. Let's retry this. Select your pokemons "+str(i)+"rd skill.\n")
                     else:
@@ -128,7 +128,7 @@ class Pokemon(object):
                 else:
                     print("\nNow for your pokemons "+str(i)+"th and last skill.\n")
                     move4 = input()
-                    get_dictionary = move_choice(move4)
+                    get_dictionary = move_choice(move4.title())
                     if get_dictionary == None:
                         print("\nThere's no such skill. Let's retry this. Select your pokemons "+str(i)+"th skill.\n")
                     else:
