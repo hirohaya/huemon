@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from os import system
-from myfunctions import print_char
 from time import sleep
 
 #OAK's introduction from POKeMON Red/Blue/Green
@@ -21,15 +20,12 @@ def oak_intro():
     intro_text = (intro_text1, intro_text2, intro_text3, intro_text4)
 
     for text in intro_text:
-        print_char(text)
+        print(text)
 
-    print_char(intro_text5)
+    print(intro_text5)
 
     player_name = input()
 
-    print_char("\n     Right! So your name is "+player_name+"!\n\n")
-    print_char("     "+player_name+"!\n     Your very own POKeMON legend is about to unfold!\n"\
+    print("\n     Right! So your name is "+player_name+"!\n\n")
+    print("     "+player_name+"!\n     Your very own POKeMON legend is about to unfold!\n"\
                "     A world of dreams and adventures with POKeMON awaits! Let's go!\n\n")
-            
-    #sleep(3)
-    #system('clear')
