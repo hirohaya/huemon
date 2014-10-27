@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 
 import moves
+from random import random, randrange
 from moves import print_moves, move_choice
-from pokedex import pokedex, pokemon_choice, pokemon_type
+from pokedex import pokedex, pokemon_choice, poketype, poke_type_chart
 from myfunctions import print_char
 
 class Pokemon(object):
@@ -248,11 +249,10 @@ class Pokemon(object):
             try:
                 option = int(input())
                 if  option <= 0 or option >= 5:
-                    level = -1
+                    option = -1
                     print_char("\nInvalid option! Type a number from 1 to 4.\n")
             except ValueError:
                 print_char("\nInvalid option! Type a number from 1 to 4.\n")
-        #Here we finally calculate the attack action damage
         if option == 0:
             damage = self.calculate_damage(self.move0, opponent)
         elif option == 1:
@@ -269,16 +269,37 @@ class Pokemon(object):
             self.move4.remaining_pp = self.move4.remaining_pp - 1
         opponent.subtract_damage(damage)
         print(self.name + " inflicted " + str(damage) + " points of damage in " + opponent.name + "!")
-        #TODO: Aqui tem um if option == 0 e dentro do bloco o Pokemon atacante perde HP de acordo com o efeito da skill Struggle
 
 
     def calculate_damage(self, move, opponent):
-        #TODO: pokemon_type tá dando erro
-        #opponent_type1, opponent_type2 = pokemon_type(opponent.name)
-        #if opponent_type1 == attack_type or opponent_type2 == move.move_type: stab = 1.5
-        #else: stab = 1.0
-        stab = 1.0
-        modifier = stab #incomplete
 
-        damage = int(((((2 * self.level) + 10) / 250) * (self.attack / self.defense) * move.move_power + 2) * modifier)
+        if self.type1 == move.move_type or self.type2 == move.move_type: stab = 1.5
+        else: stab = 1.0
+
+        #Verifies if the attack is critical
+        crit = random()
+        prob_crit = (self.speed/512)
+        if(prob_crit <= crit): level = (2*self.level + 5)/(self.level+5) #TODO: Check if this is correct
+        else: level = self.level
+
+        #Find the modifier type
+        m = move.move_type
+        n = opponent.type1
+        l = opponent.type2
+        type_index = poketype()
+        type_chart = poke_type_chart()
+        for i in type_index:
+            if i==m: index_attack = int(type_index[i])
+            if i==n: index_defender1 = int(type_index[i])
+            if l != 'Blank' and i==l: index_defender2 = type_index[i]
+
+        type1_damage = type_chart[index_attack][index_defender1]
+        if l != 'Blank': type2_damage = type_chart[index_attack][index_defender2]
+        else: type2_damage = 0
+
+        type_damage = type1_damage + type2_damage
+
+        modifier = stab * type_damage * (randrange(85, 100, 1)/100)
+        damage = int(((((2 * level) + 10) / 250) * (opponent.attack / opponent.defense) * move.move_power + 2) * modifier)
+
         return damage
