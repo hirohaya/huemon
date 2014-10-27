@@ -1,0 +1,15 @@
+Projeto de Laboratório de Programação II - Fase 1
+
+Alunos: Leonardo Schäffer                   7278142
+		Lucas Hiroshi Hayashida             7557630
+		Ludmila Ferreira Vicente e Silva    7557136
+		Renan Fichberg                      7991131
+
+
+As dificuldades relatas no desenvolvimento do projeto giraram em torno do aprendizado de Python, como a mudança da cabeça de um programador de C para um programador de Python ou a falta de afinidade com a linguagem. Fora isso, o desenvolvimento caminhou bem, não houve muito problema com Orientação a Objeto e o projeto fluiu naturalmente.
+
+Para rodar o programa:
+python main.py
+
+Para executar os testes:
+python tests.py < test_input1
