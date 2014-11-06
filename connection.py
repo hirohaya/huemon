@@ -4,6 +4,7 @@ from battle import Battle
 
 from flask import Flask
 app = Flask(__name__)
+
 # disable flask server messages
 import logging
 log = logging.getLogger('werkzeug')
@@ -14,10 +15,27 @@ def local():
 
 
 def client(server_address):
-    pass
+    pokemon = Pokemon()
+    #gera xml_do_pokemon
+    #conecta em server_address/battle e envia xml_do_pokemon
+    #recebe xml_dos_pokemons, imprime informações na tela
+    #while até alguém morrer:
+    #    ataca
+    #    recebe xml_dos_pokemons, imprime
 
 
 def server():
+    #inicia servidor e espera conexão
+    #recebe conexão:
+    #    recebe um battle_state com um pokemon
+    #    constroi o outro pokemon
+    #    monta o battle_state com 2 pokemons
+    #    ve se começa atacando, ataca
+    #    devolve battle_state
+    #    depois while 1 recebe requisição de ataque:
+    #        processa o ataque
+    #        ataca
+    #        devolve battle_state
     app.run()
 
 
