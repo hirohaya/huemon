@@ -238,12 +238,7 @@ class Pokemon(object):
             option = 0
 
         while option == -1:
-            print("It's " + self.name + "'s turn!")
-            print("Attacks:")
-            print("1. "+self.move1.move_name+" ("+str(self.move1.remaining_pp)+"/"+str(self.move1.move_pp)+")")
-            print("2. "+self.move2.move_name+" ("+str(self.move2.remaining_pp)+"/"+str(self.move2.move_pp)+")")
-            print("3. "+self.move3.move_name+" ("+str(self.move3.remaining_pp)+"/"+str(self.move3.move_pp)+")")
-            print("4. "+self.move4.move_name+" ("+str(self.move4.remaining_pp)+"/"+str(self.move4.move_pp)+")")
+            self.print_attacks()
             print("Choose the attack:")
             try:
                 option = int(input())
@@ -269,9 +264,15 @@ class Pokemon(object):
         opponent.subtract_damage(damage)
         print(self.name + " inflicted " + str(damage) + " points of damage in " + opponent.name + "!")
 
+    def print_attacks(self):
+        print("It's " + self.name + "'s turn!")
+        print("Attacks:")
+        print("1. "+self.move1.move_name+" ("+str(self.move1.remaining_pp)+"/"+str(self.move1.move_pp)+")")
+        print("2. "+self.move2.move_name+" ("+str(self.move2.remaining_pp)+"/"+str(self.move2.move_pp)+")")
+        print("3. "+self.move3.move_name+" ("+str(self.move3.remaining_pp)+"/"+str(self.move3.move_pp)+")")
+        print("4. "+self.move4.move_name+" ("+str(self.move4.remaining_pp)+"/"+str(self.move4.move_pp)+")")
 
     def calculate_damage(self, move, opponent):
-
         if self.type1 == move.move_type or self.type2 == move.move_type: stab = 1.5
         else: stab = 1.0
 

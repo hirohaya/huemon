@@ -1,10 +1,10 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from battle import Battle
 from pokemon import Pokemon
-import pokemons_xml
-import requests
+import xml_pokemon
 
+import requests
 from flask import Flask
 app = Flask(__name__)
 
@@ -13,19 +13,21 @@ import logging
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 
+
 def local():
     Battle()
 
 
 def client(server_address):
+    battle = Battle()
     pokemon = Pokemon()
-    pkmn_xml = pokemons_xml.generate_pokemons_xml(pokemon)
-    request = requests.post('http://' + server_address + ':5000/battle', data = pkmn_xml)
+    xml = xml_pokemon.generate(pokemon)
+    request = requests.post('http://' + server_address + ':5000/battle', data = xml)
     while True:
-        pkmn_xml = pokemons_xml.parse_pokemons_xml(request.content)
-        # checa se batalha acabou
-        # print battle status
-        # print attacks
+        pokemon_client, pokemon_server = xml_pokemon.parse(request.content)
+        if Battle.battle_ended(pokemon_client, pokemon_server): return
+        Battle.print_battle_status(pokemon_client, pokemon_server)
+        pokemon_client.print_attacks()
         option = input()
         request = requests.post('http://' + server_address + ':5000/battle/attack/' + option)
 
