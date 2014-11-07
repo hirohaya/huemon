@@ -34,6 +34,11 @@ def client(server_address):
 
 
 def server():
+    #mudar pokemon constructor para apenas construir o objeto com parametros recebidos e criar metodo para o usuario inserir os dados para se criar um pokemon (e então chamar o constructor)
+    #modificar battle para funcionar no modo server
+    #implementar battle como singleton
+    #implementar xml_pokemon
+    #implementar server
     app.run()
 
 
