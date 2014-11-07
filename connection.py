@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from battle import Battle
+from pokemon import Pokemon
+import pokemons_xml
+import requests
 
 from flask import Flask
 app = Flask(__name__)
@@ -16,12 +19,15 @@ def local():
 
 def client(server_address):
     pokemon = Pokemon()
-    #gera xml_do_pokemon
-    #conecta em server_address/battle e envia xml_do_pokemon
-    #recebe xml_dos_pokemons, imprime informações na tela
-    #while até alguém morrer:
-    #    ataca
-    #    recebe xml_dos_pokemons, imprime
+    pkmn_xml = pokemons_xml.generate_pokemons_xml(pokemon)
+    request = requests.post('http://' + server_address + ':5000/battle', data = pkmn_xml)
+    while True:
+        pkmn_xml = pokemons_xml.parse_pokemons_xml(request.content)
+        # checa se batalha acabou
+        # print battle status
+        # print attacks
+        option = input()
+        request = requests.post('http://' + server_address + ':5000/battle/attack/' + option)
 
 
 def server():
