@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 def pokedex():
@@ -157,6 +157,7 @@ def pokedex():
                'Mew': 'Psychic Blank'}
     return pokedex
 
+
 def poketype():
     poketype = {'Normal': 0, 'Fight': 1, 'Flying': 2,
                 'Poison': 3, 'Ground': 4, 'Rock': 5,
@@ -165,6 +166,7 @@ def poketype():
                 'Electric': 12, 'Psychic': '13', 'Ice': 14,
                 'Dragon': 15, 'Dark': 16, 'Fairy': 17}
     return poketype
+
 
 def poke_type_chart():
     type_chart = [

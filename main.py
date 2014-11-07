@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import sys
@@ -13,6 +13,7 @@ def main():
         connection.server()
     elif sys.argv[1] == '--client':
         connection.client(sys.argv[2])
+
 
 if __name__ == "__main__":
     main()

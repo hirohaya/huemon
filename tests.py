@@ -1,18 +1,18 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 import unittest
 from pokemon import *
 from moves import *
 from pokedex import *
-from pprint import pprint
 
 class TestPokemonTextGame(unittest.TestCase):
-	
 	def setUp(self):
 		self.pokemon1 = Pokemon()
 		self.pokemon2 = Pokemon()
 		self.damage = 40
 		self.hp = self.pokemon1.hp
+
 
 	def test_subtract_damage(self):
 		expected_hp = self.pokemon1.hp - self.damage
@@ -21,6 +21,7 @@ class TestPokemonTextGame(unittest.TestCase):
 		self.pokemon1.subtract_damage(self.damage)
 		self.assertEqual(self.pokemon1.hp, expected_hp)
 
+
 	def test_is_defeated(self):
 		#Defeated
 		self.pokemon1.hp = 0
@@ -28,6 +29,7 @@ class TestPokemonTextGame(unittest.TestCase):
 		#Not defeated
 		self.pokemon1.hp = self.hp
 		self.assertEqual(self.pokemon1.is_defeated(), False)
+
 
 	def test_calculate_damage(self):
 		expected_minimum_modifier = 0

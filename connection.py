@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 from battle import Battle
 from pokemon import Pokemon
 import xml_pokemon
@@ -12,7 +13,6 @@ app = Flask(__name__)
 import logging
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
-
 
 def local():
     Battle()

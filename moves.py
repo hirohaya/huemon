@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 #Defines pokemon's moves	
@@ -11,24 +11,7 @@ class Moves(object):
         self.move_power   = move_power
         self.move_acc     = move_acc 
         self.remaining_pp = remaining_pp
-    #Set move type, in the future this will determine if the move will be super effective or not
-#    def type(self, type):
-#        if self.name == "No move":
-#            self.type = "Blank"
-#        else:
-#            self.type = type
-#                    
-    #Moved pp to status
-#    def status(self, attack, accuracy, pp):
-#        if self.name == "No move":
-#            self.attack = 0
-#            self.accuracy = 0
-#            self.pp = 0
-#                
-#        else:
-#            self.attack = attack
-#            self.accuracy = accuracy
-#            self.pp = pp
+
 
 def pokemon_moves_list():
     #Ability Name/Ability Type/PP/Power/Accuracy. Source: http://www.psypokes.com/rby/attacks.php
@@ -123,11 +106,13 @@ def pokemon_moves_list():
                 'Wing Attack': 'Flying/35/35/100'}
     return moves_list
 
+
 def print_moves():
     print("Skill Name: Type/PP/Power/Accuracy")
     moves_list = pokemon_moves_list()
     for i in moves_list:
         print(i + ": "+ moves_list[i])
+
 
 def move_choice(choosen_move):
     moves_list = pokemon_moves_list()
@@ -136,6 +121,7 @@ def move_choice(choosen_move):
         if i == choosen_move:
             return {i: moves_list[i]}
     return None 
+
 
 def move_type(move):
     moves_list = pokemon_moves_list()

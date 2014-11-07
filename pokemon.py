@@ -1,8 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import moves
 from random import random, randrange
+import moves
 from moves import print_moves, move_choice
 from pokedex import pokedex, pokemon_choice, poketype, poke_type_chart
 
@@ -264,6 +264,7 @@ class Pokemon(object):
         opponent.subtract_damage(damage)
         print(self.name + " inflicted " + str(damage) + " points of damage in " + opponent.name + "!")
 
+
     def print_attacks(self):
         print("It's " + self.name + "'s turn!")
         print("Attacks:")
@@ -271,6 +272,7 @@ class Pokemon(object):
         print("2. "+self.move2.move_name+" ("+str(self.move2.remaining_pp)+"/"+str(self.move2.move_pp)+")")
         print("3. "+self.move3.move_name+" ("+str(self.move3.remaining_pp)+"/"+str(self.move3.move_pp)+")")
         print("4. "+self.move4.move_name+" ("+str(self.move4.remaining_pp)+"/"+str(self.move4.move_pp)+")")
+
 
     def calculate_damage(self, move, opponent):
         if self.type1 == move.move_type or self.type2 == move.move_type: stab = 1.5
