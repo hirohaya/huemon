@@ -20,7 +20,6 @@ def local():
 
 def client(server_address):
     battle = Battle()
-    battle = Battle()
     pokemon = Pokemon()
     xml = xml_pokemon.generate(pokemon)
     response = requests.post('http://' + server_address + ':5000/battle', data = xml)
