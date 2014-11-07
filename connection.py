@@ -34,28 +34,25 @@ def client(server_address):
 
 
 def server():
-    #inicia servidor e espera conexão
-    #recebe conexão:
-    #    recebe um battle_state com um pokemon
-    #    constroi o outro pokemon
-    #    monta o battle_state com 2 pokemons
-    #    ve se começa atacando, ataca
-    #    devolve battle_state
-    #    depois while 1 recebe requisição de ataque:
-    #        processa o ataque
-    #        ataca
-    #        devolve battle_state
     app.run()
 
 
 @app.route("/battle", methods=['POST'])
 def battle_start():
-    return "battle"
-    pass
+    pokemon_client = xml_pokemon.parse(xml)
+    pokemon_server = Pokemon()
+    if pokemon_server.speed > pokemon_client.speed:
+        pokemon_server.perform_attack(pokemon_client)
+    xml = xml_pokemon.generate(pokemon_client, pokemon_server)
+    return xml
 
 
 @app.route("/battle/attack/<int:attack_id>", methods=['POST'])
 def battle_attack(attack_id):
+    #depois while 1 recebe requisição de ataque:
+    #    processa o ataque
+    #    ataca
+    #    devolve battle_state
     if attack_id == 0:
         return "attack 0"
     elif attack_id == 1: 
