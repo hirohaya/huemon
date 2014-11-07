@@ -4,8 +4,8 @@
 from pokemon import Pokemon
 
 class Battle(object):
-    def __init__(self):
-        self.local_battle()
+    def __init__(self, local = False, client = False, server = False):
+        if local == True: self.local_battle()
 
 
     def initialize_pokemons(self):

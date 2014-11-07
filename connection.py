@@ -15,21 +15,22 @@ log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 
 def local():
-    Battle()
+    Battle(local = True)
 
 
 def client(server_address):
     battle = Battle()
+    battle = Battle()
     pokemon = Pokemon()
     xml = xml_pokemon.generate(pokemon)
-    request = requests.post('http://' + server_address + ':5000/battle', data = xml)
+    response = requests.post('http://' + server_address + ':5000/battle', data = xml)
     while True:
-        pokemon_client, pokemon_server = xml_pokemon.parse(request.content)
+        pokemon_client, pokemon_server = xml_pokemon.parse(response.content)
         if Battle.battle_ended(pokemon_client, pokemon_server): return
         Battle.print_battle_status(pokemon_client, pokemon_server)
         pokemon_client.print_attacks()
         option = input()
-        request = requests.post('http://' + server_address + ':5000/battle/attack/' + option)
+        response = requests.post('http://' + server_address + ':5000/battle/attack/' + option)
 
 
 def server():
@@ -47,13 +48,13 @@ def server():
     app.run()
 
 
-@app.route("/battle", methods=['POST', 'GET'])
+@app.route("/battle", methods=['POST'])
 def battle_start():
     return "battle"
     pass
 
 
-@app.route("/battle/attack/<int:attack_id>", methods=['POST', 'GET'])
+@app.route("/battle/attack/<int:attack_id>", methods=['POST'])
 def battle_attack(attack_id):
     if attack_id == 0:
         return "attack 0"
