@@ -247,6 +247,11 @@ class Pokemon(object):
                     print("\nInvalid option! Type a number from 1 to 4.\n")
             except ValueError:
                 print("\nInvalid option! Type a number from 1 to 4.\n")
+        damage = self.calculate_and_subtract_damage(opponent, option)
+        print(self.name + " inflicted " + str(damage) + " points of damage in " + opponent.name + "!")
+
+
+    def calculate_and_subtract_damage(self, opponent, option):
         if option == 0:
             damage = self.calculate_damage(self.move0, opponent)
         elif option == 1:
@@ -262,7 +267,7 @@ class Pokemon(object):
             damage = self.calculate_damage(self.move4, opponent)
             self.move4.remaining_pp = self.move4.remaining_pp - 1
         opponent.subtract_damage(damage)
-        print(self.name + " inflicted " + str(damage) + " points of damage in " + opponent.name + "!")
+        return damage
 
 
     def print_attacks(self):
