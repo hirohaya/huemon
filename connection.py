@@ -29,7 +29,6 @@ def client(server_address):
     pokemon_client = Pokemon()
     xml = xml_pokemon.generate(pokemon_client)
     response = requests.post('http://' + server_address + ':5000/battle', data = xml)
-    print(response.status_code)
     while response.status_code == 200:
         pokemon_client, pokemon_server = xml_pokemon.parse(response.content)
         if battle_ended(pokemon_client, pokemon_server): return
