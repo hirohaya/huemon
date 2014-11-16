@@ -44,7 +44,7 @@ def server():
     #mudar pokemon constructor para apenas construir o objeto com parametros recebidos
     #criar metodo para o usuario inserir os dados para se criar um pokemon (e então chamar o constructor)
     #implementar xml_pokemon
-    app.run()
+    app.run(debug=True)
 
 
 @app.route("/battle_state", methods=['POST'])
