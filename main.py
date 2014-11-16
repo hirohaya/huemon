@@ -2,11 +2,9 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import interface
 import connection
 
 def main():
-    interface.oak_intro()
     if len(sys.argv) == 1:
         connection.local()
     elif sys.argv[1] == '--server':
