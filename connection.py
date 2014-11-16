@@ -27,7 +27,7 @@ def local():
 def client(server_address):
     global battle, pokemon_client, pokemon_server
     battle = Battle(client = True)
-    pokemon_client = Pokemon()
+    pokemon_client = Pokemon.create_pokemon()
     xml = xml_pokemon.generate(pokemon_client)
     response = requests.post('http://' + server_address + ':5000/battle_state', data = xml, headers={'Content-Type': 'application/xml'})
     print("AQUI " + str(response.status_code))
@@ -52,7 +52,7 @@ def battle_start():
     else: abort(403)
     xml = request.data.decode('utf-8')
     pokemon_client = xml_pokemon.parse(xml)
-    pokemon_server = Pokemon()
+    pokemon_server = Pokemon.create_pokemon()
     if pokemon_server.speed > pokemon_client.speed:
         pokemon_server.perform_attack(pokemon_client)
     xml = xml_pokemon.generate(pokemon_client, pokemon_server)
