@@ -7,7 +7,6 @@ from moves import print_moves, move_choice
 from pokedex import pokedex, pokemon_choice, poketype, poke_type_chart
 
 class Pokemon(object):
-
     def __init__(self, name, type1, type2, hp, level, attack, defense, special, speed, move0, move1, move2, move3, move4):
         self.name = name
         self.type1 = type1
@@ -26,7 +25,8 @@ class Pokemon(object):
 
 
     #Set the pokemon's name at the inicialization
-    def create_pokemon(self):
+    @staticmethod
+    def create_pokemon():
         sure = "No"
         while(sure == "No"):
             #Set your POKeMON's name and its respective types

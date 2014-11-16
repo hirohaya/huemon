@@ -10,9 +10,9 @@ class Battle(object):
 
     def initialize_pokemons(self):
         print("Let's create the first POKeMON!")
-        pokemon1 = Pokemon.create_pokemon(Pokemon)
+        pokemon1 = Pokemon.create_pokemon()
         print("Let's create the second POKeMON!")
-        pokemon2 = Pokemon.create_pokemon(Pokemon)
+        pokemon2 = Pokemon.create_pokemon()
         return pokemon1, pokemon2
 
 
