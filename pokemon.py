@@ -7,8 +7,26 @@ from moves import print_moves, move_choice
 from pokedex import pokedex, pokemon_choice, poketype, poke_type_chart
 
 class Pokemon(object):
+
+    def __init__(self, name, type1, type2, hp, level, attack, defense, special, speed, move0, move1, move2, move3, move4):
+        self.name = name
+        self.type1 = type1
+        self.type2 = type2
+        self.hp = hp
+        self.level = level
+        self.attack = attack 
+        self.defense = defense
+        self.special = special
+        self.speed = speed
+        self.move0 = move0
+        self.move1 = move1
+        self.move2 = move2
+        self.move3 = move3
+        self.move4 = move4
+
+
     #Set the pokemon's name at the inicialization
-    def __init__(self):
+    def create_pokemon(self):
         sure = "No"
         while(sure == "No"):
             #Set your POKeMON's name and its respective types
@@ -191,31 +209,21 @@ class Pokemon(object):
                     break
                 #The user typed he is sure
                 elif(decision.capitalize() == "Yes"):
-                    self.name = name
-                    self.level = level
-                    self.type1 = type1
-                    self.type2 = type2
-
-                    #Set status on constructor
-                    self.hp = hp
-                    self.attack = attack
-                    self.defense = defense
-                    self.special = special
-                    self.speed = speed
-
-                    #Set Moves
-                    self.move0 = moves.Moves(move0_name, move0_type, move0_pp, move0_power, move0_accuracy, move0_pp) #Struggle
-                    self.move1 = moves.Moves(move1_name, move1_type, move1_pp, move1_power, move1_accuracy, move1_pp)
-                    self.move2 = moves.Moves(move2_name, move2_type, move2_pp, move2_power, move2_accuracy, move2_pp)
-                    self.move3 = moves.Moves(move3_name, move3_type, move3_pp, move3_power, move3_accuracy, move3_pp)
-                    self.move4 = moves.Moves(move4_name, move4_type, move4_pp, move4_power, move4_accuracy, move4_pp)
+                    move0 = moves.Moves(move0_name, move0_type, move0_pp, move0_power, move0_accuracy, move0_pp) #Struggle
+                    move1 = moves.Moves(move1_name, move1_type, move1_pp, move1_power, move1_accuracy, move1_pp)
+                    move2 = moves.Moves(move2_name, move2_type, move2_pp, move2_power, move2_accuracy, move2_pp)
+                    move3 = moves.Moves(move3_name, move3_type, move3_pp, move3_power, move3_accuracy, move3_pp)
+                    move4 = moves.Moves(move4_name, move4_type, move4_pp, move4_power, move4_accuracy, move4_pp)
                     print("\nOk! Your POKeMON has been created! Let's continue!\n\n")
                     sure = "Yes"
                     decision = "Yes"
+                    
+                    self = Pokemon(name, type1, type2, hp, level, attack, defense, special, speed, move0, move1, move2, move3, move4)
                 #Troll user. You have to answer Yes or no!
                 else:
                     print("\nWell... I was expecting for a Yes or a No, so please, don't make the things hard and answer my question, I don't have all day.\n")
                     decision = "No"
+        return self
 
 
     def subtract_damage(self, damage):
@@ -286,7 +294,7 @@ class Pokemon(object):
         #Verifies if the attack is critical
         crit = random()
         prob_crit = (self.speed/512)
-        if(prob_crit <= crit): level = (2*self.level + 5)/(self.level+5) #TODO: Check if this is correct
+        if(prob_crit <= crit): level = (2*self.level + 5)/(self.level+5) 
         else: level = self.level
 
         #Find the modifier type
