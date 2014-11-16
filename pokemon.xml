@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<battle_state>
+  <pokemon>
+    <name>Mr. Mime</name>
+    <level>1</level>
+    <attributes>
+      <health>1</health>
+      <attack>2</attack>
+      <defense>3</defense>
+      <speed>67</speed>
+      <special>4</special>
+    </attributes>
+    <type>Psychic/Blank</type>
+    <attacks>
+      <id>NotSelectedYet</id>
+      <name>NotSelectedYet</name>
+      <type>NotSelectedYet</type>
+      <power>NotSelectedYet</power>
+      <accuracy>NotSelectedYet</accuracy>
+      <power_points>NotSelectedYet</power_points>
+    </attacks>
+  </pokemon>
+</battle_state>

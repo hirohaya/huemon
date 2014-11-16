@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<battle_state>
+  <pokemon>
+    <name>pokemon_name_fuck_yeah</name>
+    <level>1234</level>
+    <attributes>
+      <health>1234</health>
+      <attack>1234</attack>
+      <defense>1234</defense>
+      <speed>1234</speed>
+      <special>1234</special>
+    </attributes>
+    <type>1234</type>
+    <attacks>
+      <id>1234</id>
+      <name>str1234</name>
+      <type>1234</type>
+      <power>1234</power>
+      <accuracy>1234</accuracy>
+      <power_points>1234</power_points>
+    </attacks>
+  </pokemon>
+  <pokemon>
+    <name>pokemon_name_fuck_yeah</name>
+    <level>1234</level>
+    <attributes>
+      <health>1234</health>
+      <attack>1234</attack>
+      <defense>1234</defense>
+      <speed>1234</speed>
+      <special>1234</special>
+    </attributes>
+    <type>1234</type>
+    <attacks>
+      <id>1234</id>
+      <name>str1234</name>
+      <type>1234</type>
+      <power>1234</power>
+      <accuracy>1234</accuracy>
+      <power_points>1234</power_points>
+    </attacks>
+  </pokemon>
+</battle_state>
