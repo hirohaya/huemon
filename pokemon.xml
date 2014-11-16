@@ -1,23 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <battle_state>
   <pokemon>
-    <name>Mr. Mime</name>
-    <level>1</level>
+    <name>Arcanine</name>
+    <level>9</level>
     <attributes>
-      <health>1</health>
-      <attack>2</attack>
-      <defense>3</defense>
-      <speed>67</speed>
-      <special>4</special>
+      <health>6</health>
+      <attack>4</attack>
+      <defense>7</defense>
+      <speed>9</speed>
+      <special>2</special>
     </attributes>
-    <type>Psychic/Blank</type>
+    <type>Fire/Blank</type>
     <attacks>
-      <id>NotSelectedYet</id>
-      <name>NotSelectedYet</name>
-      <type>NotSelectedYet</type>
-      <power>NotSelectedYet</power>
-      <accuracy>NotSelectedYet</accuracy>
-      <power_points>NotSelectedYet</power_points>
+      <id>0</id>
+      <name>Struggle</name>
+      <type>Normal</type>
+      <power>50</power>
+      <accuracy>100</accuracy>
+      <power_points>1</power_points>
+      <id>1</id>
+      <name>Fire Blast</name>
+      <type>Fire</type>
+      <power>120</power>
+      <accuracy>0.85</accuracy>
+      <power_points>20</power_points>
+      <id>2</id>
+      <name>Slash</name>
+      <type>Normal</type>
+      <power>70</power>
+      <accuracy>1.0</accuracy>
+      <power_points>20</power_points>
+      <id>3</id>
+      <name>Pound</name>
+      <type>Normal</type>
+      <power>40</power>
+      <accuracy>1.0</accuracy>
+      <power_points>35</power_points>
+      <id>4</id>
+      <name>Take Down</name>
+      <type>Normal</type>
+      <power>90</power>
+      <accuracy>0.85</accuracy>
+      <power_points>20</power_points>
     </attacks>
   </pokemon>
 </battle_state>

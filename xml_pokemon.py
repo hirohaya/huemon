@@ -9,14 +9,10 @@ def generate(pokemon1, pokemon2 = None):
 	tree = ElementTree.parse('structure.xml')
 	root = tree.getroot()
 	xml_file = open('pokemon.xml', 'w')
-	print("AQUI1 " + str(tree))
-	print("AQUI2 " + str(root))
-	print("AQUI3 ")
 	i = 0
 	j = 0
 	k = 0
 	for child in root.iter():
-		print(child.tag,"-->", child.attrib)
 		#pokemon do cliente
 		if k == 0:
 			if child.tag == "battle_state":
@@ -54,24 +50,48 @@ def generate(pokemon1, pokemon2 = None):
 				xml_file.write("    <type>"+pokemon1.type1 + "/" + pokemon1.type2+"</type>\n")
 				j = j + 1
 				continue
-			if child.tag == "id":
+			if child.tag == "attacks":
 				xml_file.write("    <attacks>\n")
-				xml_file.write("      <id>NotSelectedYet</id>\n")
-				continue
-			if child.tag == "name" and i == 1:
-				xml_file.write("      <name>NotSelectedYet</name>\n")
-				continue
-			if child.tag == "type" and j == 1:
-				xml_file.write("      <type>NotSelectedYet</type>\n")
-				continue
-			if child.tag == "power":
-				xml_file.write("      <power>NotSelectedYet</power>\n")
-				continue
-			if child.tag == "accuracy":
-				xml_file.write("      <accuracy>NotSelectedYet</accuracy>\n")
-				continue
+				skill = 0
+				while skill < 5:
+					if skill == 0:
+						xml_file.write("      <id>0</id>\n")
+						xml_file.write("      <name>"+pokemon1.move0.move_name+"</name>\n")
+						xml_file.write("      <type>"+pokemon1.move0.move_type+"</type>\n")
+						xml_file.write("      <power>"+str(pokemon1.move0.move_power)+"</power>\n")
+						xml_file.write("      <accuracy>"+str(pokemon1.move0.move_acc)+"</accuracy>\n")
+						xml_file.write("      <power_points>"+str(pokemon1.move0.move_pp)+"</power_points>\n")
+					if skill == 1:
+						xml_file.write("      <id>1</id>\n")
+						xml_file.write("      <name>"+pokemon1.move1.move_name+"</name>\n")
+						xml_file.write("      <type>"+pokemon1.move1.move_type+"</type>\n")
+						xml_file.write("      <power>"+str(pokemon1.move1.move_power)+"</power>\n")
+						xml_file.write("      <accuracy>"+str(pokemon1.move1.move_acc)+"</accuracy>\n")
+						xml_file.write("      <power_points>"+str(pokemon1.move1.move_pp)+"</power_points>\n")
+					if skill == 2:
+						xml_file.write("      <id>2</id>\n")
+						xml_file.write("      <name>"+pokemon1.move2.move_name+"</name>\n")
+						xml_file.write("      <type>"+pokemon1.move2.move_type+"</type>\n")
+						xml_file.write("      <power>"+str(pokemon1.move2.move_power)+"</power>\n")
+						xml_file.write("      <accuracy>"+str(pokemon1.move2.move_acc)+"</accuracy>\n")
+						xml_file.write("      <power_points>"+str(pokemon1.move2.move_pp)+"</power_points>\n")
+					if skill == 3:
+						xml_file.write("      <id>3</id>\n")
+						xml_file.write("      <name>"+pokemon1.move3.move_name+"</name>\n")
+						xml_file.write("      <type>"+pokemon1.move3.move_type+"</type>\n")
+						xml_file.write("      <power>"+str(pokemon1.move3.move_power)+"</power>\n")
+						xml_file.write("      <accuracy>"+str(pokemon1.move3.move_acc)+"</accuracy>\n")
+						xml_file.write("      <power_points>"+str(pokemon1.move3.move_pp)+"</power_points>\n")
+					if skill == 4:
+						xml_file.write("      <id>4</id>\n")
+						xml_file.write("      <name>"+pokemon1.move4.move_name+"</name>\n")
+						xml_file.write("      <type>"+pokemon1.move4.move_type+"</type>\n")
+						xml_file.write("      <power>"+str(pokemon1.move4.move_power)+"</power>\n")
+						xml_file.write("      <accuracy>"+str(pokemon1.move4.move_acc)+"</accuracy>\n")
+						xml_file.write("      <power_points>"+str(pokemon1.move4.move_pp)+"</power_points>\n")
+					skill = skill + 1
+
 			if child.tag == "power_points":
-				xml_file.write("      <power_points>NotSelectedYet</power_points>\n")
 				xml_file.write("    </attacks>\n")
 				xml_file.write("  </pokemon>\n")
 				k = k + 1
@@ -117,12 +137,7 @@ def generate(pokemon1, pokemon2 = None):
 	xml_file.close()
 	xml_file = open("pokemon.xml", "r")
 	xml = xml_file.read()
-
-	print(xml)
-	#DEBUG
-	#for child in root.iter():
-	#	print(child.tag,"-->", child.attrib)
-	return xml
+	return xml_file
 
 
 def parse(xml):
