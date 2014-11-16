@@ -9,9 +9,9 @@ Alunos: Leonardo Schäffer                   7278142
 As dificuldades relatas no desenvolvimento do projeto giraram em torno do aprendizado de Python, como a mudança da cabeça de um programador de C para um programador de Python ou a falta de afinidade com a linguagem. Fora isso, o desenvolvimento caminhou bem, não houve muito problema com Orientação a Objeto e o projeto fluiu naturalmente.
 
 Para rodar o programa:
-Batalha local: python main.py
-Modo cliente: python main.py --client ip
-Modo server: python main.py --server
+Batalha local: python3 main.py
+Modo cliente: python3 main.py --client ip
+Modo server: python3 main.py --server
 
 Para executar os testes:
-python tests.py < test_input1
+python3 tests.py < test_input1
