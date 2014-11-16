@@ -4,7 +4,6 @@
 from xml.etree import ElementTree
 from pokemon import Pokemon
 
-
 def generate(pokemon1, pokemon2 = None):
     tree = ElementTree.parse('structure.xml')
     root = tree.getroot()
