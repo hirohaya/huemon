@@ -7,7 +7,7 @@ from pokemon import Pokemon
 import xml_pokemon
 
 import requests
-from flask import Flask, abort
+from flask import Flask, abort, request
 app = Flask(__name__)
 
 # disable flask server messages
@@ -29,7 +29,7 @@ def client(server_address):
     battle = Battle(client = True)
     pokemon_client = Pokemon()
     xml = xml_pokemon.generate(pokemon_client)
-    response = requests.post('http://' + server_address + ':5000/battle_state', data = xml)
+    response = requests.post('http://' + server_address + ':5000/battle_state', data = xml, headers={'Content-Type': 'application/xml'})
     print("AQUI " + str(response.status_code))
     while response.status_code == 200:
         pokemon_client, pokemon_server = xml_pokemon.parse(response.content)
@@ -52,6 +52,7 @@ def battle_start():
     global battle, pokemon_client, pokemon_server
     if battle == None: battle = Battle(server = True)
     else: abort(403)
+    xml = request.data.decode('utf-8')
     pokemon_client = xml_pokemon.parse(xml)
     pokemon_server = Pokemon()
     if pokemon_server.speed > pokemon_client.speed:
