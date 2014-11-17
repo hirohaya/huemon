@@ -67,7 +67,6 @@ def client(server_address):
                 else:
                     print("\nInvalid option. It needs to be a number from 1 to 4 with remaining PP.\n")
         xml = xml_pokemon.generate(pokemon_client, pokemon_server)
-        print(xml)
         response = requests.post('http://' + server_address + ':5000/battle_state/attack/' + option, data = xml, headers={'Content-Type': 'application/xml'})
 
 
@@ -81,7 +80,6 @@ def battle_start():
     if battle == None: battle = Battle(server = True)
     else: abort(403)
     xml = request.data.decode('utf-8')
-    print(xml)
     pokemon_client, dummy = xml_pokemon.parse(xml)
     pokemon_server = Pokemon.create_pokemon()
     battle.print_battle_status(pokemon_client, pokemon_server)

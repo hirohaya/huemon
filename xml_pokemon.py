@@ -335,7 +335,6 @@ def parse(xml):
         else: # server pokemon
             if child.tag == "name" and i == 0:
                 server_pokemon_name = child.text
-                print
                 i = i + 1
                 continue
             if child.tag == "level":
