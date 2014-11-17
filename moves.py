@@ -4,7 +4,8 @@
 #Defines pokemon's moves	
 class Moves(object):
     #Set move name by inicialization
-    def __init__(self, move_name, move_type, move_pp, move_power, move_acc, remaining_pp):
+    def __init__(self, move_id, move_name, move_type, move_pp, move_power, move_acc, remaining_pp):
+        self.move_id      = move_id
         self.move_name    = move_name
         self.move_type    = move_type
         self.move_pp      = move_pp

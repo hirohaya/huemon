@@ -69,6 +69,7 @@ class Pokemon(object):
             print("\nTo choose a skill, type its name using your keyboard. You will have to choose 4 skills for your pokemon.\n")
             while i < 5:
                 if i == 0:
+                    move0_id = i
                     move0_name = 'Struggle'
                     move0_type = 'Normal'
                     move0_pp = 1
@@ -83,6 +84,7 @@ class Pokemon(object):
                     if get_dictionary == None:
                         print("\nThere's no such skill. Let's retry this. Select your pokemons "+str(i)+"st skill.\n")
                     else:
+                        move1_id = i
                         for k, v in get_dictionary.items():
                             move1_name = k
                             move1_status = v
@@ -104,6 +106,7 @@ class Pokemon(object):
                     if get_dictionary == None:
                         print("\nThere's no such skill. Let's retry this. Select your pokemons "+str(i)+"nd skill.\n")
                     else:
+                        move2_id = i
                         for k, v in get_dictionary.items():
                             move2_name = k
                             move2_status = v
@@ -127,6 +130,7 @@ class Pokemon(object):
                     if get_dictionary == None:
                         print("\nThere's no such skill. Let's retry this. Select your pokemons "+str(i)+"rd skill.\n")
                     else:
+                        move3_id = i
                         for k, v in get_dictionary.items():
                             move3_name = k
                             move3_status = v
@@ -150,6 +154,7 @@ class Pokemon(object):
                     if get_dictionary == None:
                         print("\nThere's no such skill. Let's retry this. Select your pokemons "+str(i)+"th skill.\n")
                     else:
+                        move4_id = i
                         for k, v in get_dictionary.items():
                             move4_name = k
                             move4_status = v
@@ -209,11 +214,11 @@ class Pokemon(object):
                     break
                 #The user typed he is sure
                 elif(decision.capitalize() == "Yes"):
-                    move0 = moves.Moves(move0_name, move0_type, move0_pp, move0_power, move0_accuracy, move0_pp) #Struggle
-                    move1 = moves.Moves(move1_name, move1_type, move1_pp, move1_power, move1_accuracy, move1_pp)
-                    move2 = moves.Moves(move2_name, move2_type, move2_pp, move2_power, move2_accuracy, move2_pp)
-                    move3 = moves.Moves(move3_name, move3_type, move3_pp, move3_power, move3_accuracy, move3_pp)
-                    move4 = moves.Moves(move4_name, move4_type, move4_pp, move4_power, move4_accuracy, move4_pp)
+                    move0 = moves.Moves(move0_id, move0_name, move0_type, move0_pp, move0_power, move0_accuracy, move0_pp) #Struggle
+                    move1 = moves.Moves(move1_id, move1_name, move1_type, move1_pp, move1_power, move1_accuracy, move1_pp)
+                    move2 = moves.Moves(move2_id, move2_name, move2_type, move2_pp, move2_power, move2_accuracy, move2_pp)
+                    move3 = moves.Moves(move3_id, move3_name, move3_type, move3_pp, move3_power, move3_accuracy, move3_pp)
+                    move4 = moves.Moves(move4_id, move4_name, move4_type, move4_pp, move4_power, move4_accuracy, move4_pp)
                     print("\nOk! Your POKeMON has been created! Let's continue!\n\n")
                     sure = "Yes"
                     decision = "Yes"

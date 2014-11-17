@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <battle_state>
   <pokemon>
-    <name>pokemon_name_fuck_yeah</name>
+    <name>pokemon_name</name>
     <level>1234</level>
     <attributes>
       <health>1234</health>
@@ -21,7 +21,7 @@
     </attacks>
   </pokemon>
   <pokemon>
-    <name>pokemon_name_fuck_yeah</name>
+    <name>pokemon_name</name>
     <level>1234</level>
     <attributes>
       <health>1234</health>
