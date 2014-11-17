@@ -31,8 +31,8 @@ def client(server_address):
     response = requests.post('http://' + server_address + ':5000/battle_state', data = xml, headers={'Content-Type': 'application/xml'})
     print("AQUI " + str(response.status_code))
     while response.status_code == 200:
-        pokemon_client, pokemon_server = xml_pokemon.parse(response.content)
-        if battle_ended(pokemon_client, pokemon_server): return
+        pokemon_client, pokemon_server = xml_pokemon.parse(response.content.decode('utf-8'))
+        if battle.battle_ended(pokemon_client, pokemon_server): return
         battle.print_battle_status(pokemon_client, pokemon_server)
         pokemon_client.print_attacks()
         option = input()
