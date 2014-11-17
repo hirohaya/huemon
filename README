@@ -6,12 +6,21 @@ Alunos: Leonardo Schäffer                   7278142
         Renan Fichberg                      7991131
 
 
-As dificuldades relatas no desenvolvimento do projeto giraram em torno do aprendizado de Python, como a mudança da cabeça de um programador de C para um programador de Python ou a falta de afinidade com a linguagem. Fora isso, o desenvolvimento caminhou bem, não houve muito problema com Orientação a Objeto e o projeto fluiu naturalmente.
 
 Para rodar o programa:
-Batalha local: python3 main.py
-Modo cliente: python3 main.py --client ip
-Modo server: python3 main.py --server
+	Batalha local: 	$ python3 main.py
+	Modo cliente: 	$ python3 main.py --client ip
+	Modo server: 	$ python3 main.py --server
 
 Para executar os testes:
-python3 tests.py < test_input1
+			$ python3 tests.py < test_input1
+
+
+
+Considerações:
+
+	Nessa fase encontramos algumas dificuldades para lidar com o arquivos xml. Além disso tivemos muitas dúvidas com relação a comunicação com os projetos de outros grupos. Existem pontos em que convencionamos de alguma forma mas outros grupos podem fazer isso de modo diferente por que essas informações não estavam completas no enunciado.
+
+	- O enunciado não deixa explícito se o pokemon do cliente ou do servidor vem primeiro no xml. Nessa fase convencionamos que o primeiro fosse o pokemon cliente.
+	- No modo de batalha remota, devido a estrutura pedida do XML, pela falta de um campo para guardar o máximo de PP que uma skill tem, no modo de batalha está sendo impresso a quantidade de pp/quantidade de pp, ao inves de quantidade de PP/maximo de pp.
+	
