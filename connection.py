@@ -47,7 +47,6 @@ def server():
 @app.route("/battle_state", methods=['POST'])
 def battle_start():
     global battle, pokemon_client, pokemon_server
-    print(battle)
     if battle == None: battle = Battle(server = True)
     else: abort(403)
     xml = request.data.decode('utf-8')
