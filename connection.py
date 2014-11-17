@@ -31,8 +31,10 @@ def client(server_address):
     response = requests.post('http://' + server_address + ':5000/battle_state', data = xml, headers={'Content-Type': 'application/xml'})
     while response.status_code == 200:
         pokemon_client, pokemon_server = xml_pokemon.parse(response.content.decode('utf-8'))
-        if battle.battle_ended(pokemon_client, pokemon_server): return
         battle.print_battle_status(pokemon_client, pokemon_server)
+        if battle.battle_ended(pokemon_client, pokemon_server):
+            response = requests.post('http://' + server_address + ':5000/battle_state/attack/0')
+            return
         pokemon_client.print_attacks()
         option = input()
         response = requests.post('http://' + server_address + ':5000/battle_state/attack/' + option)
@@ -58,7 +60,14 @@ def battle_start():
 
 @app.route("/battle_state/attack/<int:attack_id>", methods=['POST'])
 def battle_attack(attack_id):
+    if battle.battle_ended(pokemon_client, pokemon_server):
+        func = request.environ.get('werkzeug.server.shutdown')
+        if func is None:
+            raise RuntimeError('Not running with the Werkzeug Server')
+        func()
+        return "Shuting down"
     pokemon_client.calculate_and_subtract_damage(pokemon_server, attack_id)
     pokemon_server.perform_attack(pokemon_client)
+    battle.print_battle_status(pokemon_client, pokemon_server)
     xml = xml_pokemon.generate(pokemon_client, pokemon_server)
     return xml
