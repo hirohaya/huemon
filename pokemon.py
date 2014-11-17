@@ -264,6 +264,42 @@ class Pokemon(object):
         print(self.name + " inflicted " + str(damage) + " points of damage in " + opponent.name + "!")
 
 
+    def perform_attack_network(self, opponent, option):
+        #The user will choose his skill
+        if self.move1.remaining_pp == 0 and self.move2.remaining_pp == 0 and self.move3.remaining_pp == 0 and self.move4.remaining_pp == 0:
+            print("Your pokemon have no more PP left and will use Struggle!\n\n")
+            return 0
+
+        while option == -1:
+            self.print_attacks()
+            print("Choose the attack:")
+            try:
+                option = int(input())
+                if  option <= 0 or option >= 5:
+                    option = -1
+                    print("\nInvalid option! Type a number from 1 to 4.\n")
+                elif option == 1 and self.move1.remaining_pp <= 0:
+                    print("You have no more available PP to use this skill!")
+                    option = -1
+                elif option == 2 and self.move2.remaining_pp <= 0:
+                    print("You have no more available PP to use this skill!")
+                    option = -1
+                elif option == 3 and self.move3.remaining_pp <= 0:
+                    print("You have no more available PP to use this skill!")
+                    option = -1
+                elif option == 4 and self.move4.remaining_pp <= 0:
+                    print("You have no more available PP to use this skill!")
+                    option = -1
+            except ValueError:
+                print("\nInvalid option! Type a number from 1 to 4.\n")
+        return option
+
+
+    def announce_damage_network(self, opponent, option):
+        damage = self.calculate_and_subtract_damage(opponent, option)
+        print(self.name + " inflicted " + str(damage) + " points of damage in " + opponent.name + "!")
+
+
     def calculate_and_subtract_damage(self, opponent, option):
         if option == 0:
             damage = self.calculate_damage(self.move0, opponent)

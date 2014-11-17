@@ -86,7 +86,8 @@ def battle_start():
     pokemon_server = Pokemon.create_pokemon()
     battle.print_battle_status(pokemon_client, pokemon_server)
     if pokemon_server.speed > pokemon_client.speed:
-        pokemon_server.perform_attack(pokemon_client)
+        option = pokemon_server.perform_attack_network(pokemon_client, -1)
+        pokemon_server.announce_damage_network(pokemon_client, option)
         battle.print_battle_status(pokemon_client, pokemon_server)
         if battle.battle_ended(pokemon_client, pokemon_server):
             server_shutdown()
@@ -103,7 +104,8 @@ def battle_attack(attack_id):
     if battle.battle_ended(pokemon_client, pokemon_server):
         server_shutdown()
     else:
-        pokemon_server.perform_attack(pokemon_client)
+        option = pokemon_server.perform_attack_network(pokemon_client, -1)
+        pokemon_server.announce_damage_network(pokemon_client, option)
         battle.print_battle_status(pokemon_client, pokemon_server)
         if battle.battle_ended(pokemon_client, pokemon_server):
             server_shutdown()
