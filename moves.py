@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-#Defines pokemon's moves	
+#Defines pokemon's moves
 class Moves(object):
     #Set move name by inicialization
     def __init__(self, move_id, move_name, move_type, move_pp, move_power, move_acc, remaining_pp):
