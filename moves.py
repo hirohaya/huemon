@@ -106,19 +106,12 @@ def pokemon_moves_list():
                 'Wing Attack': 'Flying/35/35/100'}
     return moves_list
 
-def pokemon_moves(name, mtype, pp, power, accuracy, remaining_pp):
-    pokemon_moves = {'name': name, 'type': mtype, 'pp': pp, 'power': power, 'accuracy': accuracy, 'remaining_pp': remaining_pp}
-    return pokemon_moves
+def create_move_dictionary(name, mtype, pp, power, accuracy, remaining_pp):
+    move_dictionary = {'name': name, 'type': mtype, 'pp': pp, 'power': power, 'accuracy': accuracy, 'remaining_pp': remaining_pp}
+    return move_dictionary
 
-def attr_move(attr):
-    for i in attr:
-        if i == 'name': move_name = attr[i]
-        if i == 'type': move_type = attr[i]
-        if i == 'pp': move_pp = attr[i]
-        if i == 'power': move_power = attr[i]
-        if i == 'accuracy': move_acc = attr[i]
-        if i == 'reaminin_pp': remaining_pp = attr[i]
-    move = Moves(move_name, move_type, move_pp, move_power, move_acc, move_pp)
+def move_dictionary(move_dictionary):
+    move = Moves(move_dictionary['name'], move_dictionary['type'], move_dictionary['pp'], move_dictionary['power'], move_dictionary['accuracy'], move_dictionary['pp'])
     return move
 
 def print_moves():
