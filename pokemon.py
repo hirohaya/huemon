@@ -175,20 +175,60 @@ class Pokemon(object):
             print("\nNow let's set your POKeMON's status!\n")
 
             #Set HP
-            print("\nHow much HP?\n")
-            hp = int(input())
+            hp = -1
+            while hp == -1:
+                print("\nHow much HP?\n")
+                try:
+                    hp = int(input())
+                    if hp < 1 or hp > 255:
+                        hp = -1
+                        print("\nInvalid number. The hp must be a number from 1 to 255. Let's retry this.\n")
+                except ValueError:
+                    print("\nNot a number. Let's retry this.\n")
             #Set Attack
-            print("\nHow much Attack?\n")
-            attack = int(input())
+            attack = -1
+            while attack == -1:
+                print("\nHow much Attack?\n")
+                try:
+                    attack = int(input())
+                    if attack < 1 or attack > 255:
+                        attack = -1
+                        print("\nInvalid number. The Attack must be a number from 1 to 255. Let's retry this.\n")
+                except ValueError:
+                    print("\nNot a number. Let's retry this.\n")
             #Set Defense
-            print("\nHow much Defense?\n")
-            defense = int(input())
+            defense = -1
+            while defense == -1:
+                print("\nHow much Defense?\n")
+                try:
+                    defense = int(input())
+                    if defense < 1 or defense > 255:
+                        defense = -1
+                        print("\nInvalid number. The Defense must be a number from 1 to 255. Let's retry this.\n")
+                except ValueError:
+                    print("\nNot a number. Let's retry this.\n")
             #Set Special
-            print("\nHow much Special?\n")
-            special = int(input())
+            special = -1
+            while special == -1:
+                print("\nHow much Special?\n")
+                try:
+                    special = int(input())
+                    if special < 1 or special > 255:
+                        special = -1
+                        print("\nInvalid number. The Special must be a number from 1 to 255. Let's retry this.\n")
+                except ValueError:
+                    print("\nNot a number. Let's retry this.\n")
             #Set Speed
-            print("\nHow much Speed?\n")
-            speed = int(input())
+            speed = -1
+            while speed == -1:
+                print("\nHow much Speed?\n")
+                try:
+                    speed = int(input())
+                    if speed < 1 or speed > 255:
+                        speed = -1
+                        print("\nInvalid number. The Attack must be a number from 1 to 255. Let's retry this.\n")
+                except ValueError:
+                    print("\nNot a number. Let's retry this.\n")
 
             #Display the newborn POKeMON's info
             print("\nYour POKeMON status are:\n\n")
