@@ -46,6 +46,6 @@ class Battle(object):
 
 
     def print_battle_status(self, pokemon1, pokemon2):
-        print("\nBattle status:")
+        print("Battle status:")
         print(pokemon1.name + " has " + str(pokemon1.hp) + " HP.")
         print(pokemon2.name + " has " + str(pokemon2.hp) + " HP.\n")

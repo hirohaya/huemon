@@ -29,6 +29,7 @@ def client(server_address):
     pokemon_client = Pokemon.create_pokemon()
     xml = xml_pokemon.generate(pokemon_client, pokemon_server)
     response = requests.post('http://' + server_address + ':5000/battle_state', data = xml, headers={'Content-Type': 'application/xml'})
+    client_attacked = False
     while response.status_code == 200:
         client_hp = pokemon_client.hp
         if (pokemon_server != None):
@@ -36,8 +37,9 @@ def client(server_address):
             print_damage = True
         else: print_damage = False
         pokemon_client, pokemon_server = xml_pokemon.parse(response.content.decode('utf-8'))
+        if client_attacked: print (pokemon_client.name + " inflicted " + str(server_hp - pokemon_server.hp) + " points of damage in " + pokemon_server.name + "!")
         print (pokemon_server.name + " inflicted " + str(client_hp - pokemon_client.hp) + " points of damage in " + pokemon_client.name + "!")
-        if print_damage: print (pokemon_client.name + " inflicted " + str(server_hp - pokemon_server.hp) + " points of damage in " + pokemon_server.name + "!")
+        battle.print_battle_status(pokemon_client, pokemon_server)
         battle.print_battle_status(pokemon_client, pokemon_server)
         if battle.battle_ended(pokemon_client, pokemon_server):
             response = requests.post('http://' + server_address + ':5000/battle_state/attack/0')
@@ -60,15 +62,12 @@ def battle_start():
     xml = request.data.decode('utf-8')
     pokemon_client, dummy = xml_pokemon.parse(xml)
     pokemon_server = Pokemon.create_pokemon()
+    battle.print_battle_status(pokemon_client, pokemon_server)
     if pokemon_server.speed > pokemon_client.speed:
+        pokemon_server.perform_attack(pokemon_client)
         battle.print_battle_status(pokemon_client, pokemon_server)
         if battle.battle_ended(pokemon_client, pokemon_server):
-            func = request.environ.get('werkzeug.server.shutdown')
-            if func is None:
-                raise RuntimeError('Not running with the Werkzeug Server')
-            func()
-            return "Shuting down"
-        pokemon_server.perform_attack(pokemon_client)
+            server_shutdown()
     xml = xml_pokemon.generate(pokemon_client, pokemon_server)
     return xml
 
@@ -80,11 +79,17 @@ def battle_attack(attack_id):
     print (pokemon_client.name + " inflicted " + str(server_hp - pokemon_server.hp) + " points of damage in " + pokemon_server.name + "!")
     battle.print_battle_status(pokemon_client, pokemon_server)
     if battle.battle_ended(pokemon_client, pokemon_server):
-        func = request.environ.get('werkzeug.server.shutdown')
-        if func is None:
-            raise RuntimeError('Not running with the Werkzeug Server')
-        func()
-        return "Shuting down"
-    pokemon_server.perform_attack(pokemon_client)
+        server_shutdown()
+    else:
+        pokemon_server.perform_attack(pokemon_client)
+        battle.print_battle_status(pokemon_client, pokemon_server)
+        if battle.battle_ended(pokemon_client, pokemon_server):
+            server_shutdown()
     xml = xml_pokemon.generate(pokemon_client, pokemon_server)
     return xml
+
+def server_shutdown():
+    func = request.environ.get('werkzeug.server.shutdown')
+    if func is None:
+        raise RuntimeError('Not running with the Werkzeug Server')
+    func()
