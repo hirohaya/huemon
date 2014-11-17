@@ -28,22 +28,26 @@ def client(server_address):
     battle = Battle(client = True)
     pokemon_client = Pokemon.create_pokemon()
     xml = xml_pokemon.generate(pokemon_client, pokemon_server)
-    response = requests.post('http://' + server_address + ':5000/battle_state', data = xml, headers={'Content-Type': 'application/xml'})
-    client_attacked = False
+    response = requests.post('http://' + server_address + ':5000/battle', data = xml, headers={'Content-Type': 'application/xml'})
+    not_first_round = False
     while response.status_code == 200:
-        client_hp = pokemon_client.hp
-        if (pokemon_server != None):
+        if not_first_round:
             server_hp = pokemon_server.hp
-            print_damage = True
-        else: print_damage = False
-        pokemon_client, pokemon_server = xml_pokemon.parse(response.content.decode('utf-8'))
-        if client_attacked: print (pokemon_client.name + " inflicted " + str(server_hp - pokemon_server.hp) + " points of damage in " + pokemon_server.name + "!")
-        print (pokemon_server.name + " inflicted " + str(client_hp - pokemon_client.hp) + " points of damage in " + pokemon_client.name + "!")
-        battle.print_battle_status(pokemon_client, pokemon_server)
-        battle.print_battle_status(pokemon_client, pokemon_server)
-        if battle.battle_ended(pokemon_client, pokemon_server):
-            response = requests.post('http://' + server_address + ':5000/battle_state/attack/0')
-            return
+            dummy, pokemon_server = xml_pokemon.parse(response.content.decode('utf-8'))
+            print (pokemon_client.name + " inflicted " + str(server_hp - pokemon_server.hp) + " points of damage in " + pokemon_server.name + "!")
+            battle.print_battle_status(pokemon_client, pokemon_server)
+            if battle.battle_ended(pokemon_client, pokemon_server):
+                return
+
+            client_hp = pokemon_client.hp
+            pokemon_client, dummy = xml_pokemon.parse(response.content.decode('utf-8'))
+            print (pokemon_server.name + " inflicted " + str(client_hp - pokemon_client.hp) + " points of damage in " + pokemon_client.name + "!")
+            battle.print_battle_status(pokemon_client, pokemon_server)
+            if battle.battle_ended(pokemon_client, pokemon_server):
+                return
+        else:
+            pokemon_client, pokemon_server = xml_pokemon.parse(response.content.decode('utf-8'))
+
         pokemon_client.print_attacks()
         while True:
             if pokemon_client.move1.remaining_pp == 0 and pokemon_client.move2.remaining_pp == 0 and pokemon_client.move3.remaining_pp == 0 and pokemon_client.move4.remaining_pp == 0:
@@ -67,7 +71,8 @@ def client(server_address):
                 else:
                     print("\nInvalid option. It needs to be a number from 1 to 4 with remaining PP.\n")
         xml = xml_pokemon.generate(pokemon_client, pokemon_server)
-        response = requests.post('http://' + server_address + ':5000/battle_state/attack/' + option, data = xml, headers={'Content-Type': 'application/xml'})
+        response = requests.post('http://' + server_address + ':5000/battle/attack/' + option, data = xml, headers={'Content-Type': 'application/xml'})
+        not_first_round = True
 
 
 def server():
@@ -75,7 +80,7 @@ def server():
     app.run()
 
 
-@app.route("/battle_state", methods=['POST'])
+@app.route("/battle", methods=['POST'])
 def battle_start():
     global battle, pokemon_client, pokemon_server
     if battle == None: battle = Battle(server = True)
@@ -94,7 +99,7 @@ def battle_start():
     return xml
 
 
-@app.route("/battle_state/attack/<int:attack_id>", methods=['POST'])
+@app.route("/battle/attack/<int:attack_id>", methods=['POST'])
 def battle_attack(attack_id):
     server_hp = pokemon_server.hp
     pokemon_client.calculate_and_subtract_damage(pokemon_server, attack_id)
