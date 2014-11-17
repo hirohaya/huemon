@@ -214,11 +214,11 @@ class Pokemon(object):
                     break
                 #The user typed he is sure
                 elif(decision.capitalize() == "Yes"):
-                    move0 = moves.create_move_dictionary(0, move0_name, move0_type, move0_pp, move0_power, move0_accuracy, move0_pp) #Struggle
-                    move1 = moves.create_move_dictionary(1, move1_name, move1_type, move1_pp, move1_power, move1_accuracy, move1_pp)
-                    move2 = moves.create_move_dictionary(2, move2_name, move2_type, move2_pp, move2_power, move2_accuracy, move2_pp)
-                    move3 = moves.create_move_dictionary(3, move3_name, move3_type, move3_pp, move3_power, move3_accuracy, move3_pp)
-                    move4 = moves.create_move_dictionary(4, move4_name, move4_type, move4_pp, move4_power, move4_accuracy, move4_pp)
+                    move0 = moves.create_move_dictionary(move0_id, move0_name, move0_type, move0_pp, move0_power, move0_accuracy, move0_pp) #Struggle
+                    move1 = moves.create_move_dictionary(move1_id, move1_name, move1_type, move1_pp, move1_power, move1_accuracy, move1_pp)
+                    move2 = moves.create_move_dictionary(move2_id, move2_name, move2_type, move2_pp, move2_power, move2_accuracy, move2_pp)
+                    move3 = moves.create_move_dictionary(move3_id, move3_name, move3_type, move3_pp, move3_power, move3_accuracy, move3_pp)
+                    move4 = moves.create_move_dictionary(move4_id, move4_name, move4_type, move4_pp, move4_power, move4_accuracy, move4_pp)
                     print("\nOk! Your POKeMON has been created! Let's continue!\n\n")
                     sure = "Yes"
                     decision = "Yes"

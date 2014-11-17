@@ -2,12 +2,12 @@
 <battle_state>
   <pokemon>
     <name>Mew</name>
-    <level>3</level>
+    <level>1</level>
     <attributes>
       <health>1</health>
       <attack>2</attack>
       <defense>3</defense>
-      <speed>6</speed>
+      <speed>5</speed>
       <special>4</special>
     </attributes>
     <type>Psychic/Blank</type>
@@ -31,16 +31,16 @@
       <accuracy>1.0</accuracy>
       <power_points>20</power_points>
       <id>3</id>
-      <name>Take Down</name>
-      <type>Normal</type>
-      <power>90</power>
-      <accuracy>0.85</accuracy>
-      <power_points>20</power_points>
-      <id>4</id>
       <name>Swift</name>
       <type>Normal</type>
       <power>60</power>
       <accuracy>1.0</accuracy>
+      <power_points>20</power_points>
+      <id>4</id>
+      <name>Take Down</name>
+      <type>Normal</type>
+      <power>90</power>
+      <accuracy>0.85</accuracy>
       <power_points>20</power_points>
     </attacks>
   </pokemon>
