@@ -74,7 +74,7 @@ class Pokemon(object):
                     move0_type = 'Normal'
                     move0_pp = 1
                     move0_power = 50
-                    move0_accuracy = 100
+                    move0_accuracy = 1.0
                     i = i + 1
                     continue
                 elif i == 1:

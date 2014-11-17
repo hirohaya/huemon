@@ -27,11 +27,11 @@ def client(server_address):
     global battle, pokemon_client, pokemon_server
     battle = Battle(client = True)
     pokemon_client = Pokemon.create_pokemon()
-    xml = xml_pokemon.generate(pokemon_client)
+    xml = xml_pokemon.generate(pokemon_client, pokemon_server)
     response = requests.post('http://' + server_address + ':5000/battle_state', data = xml, headers={'Content-Type': 'application/xml'})
-    print("AQUI " + str(response.status_code))
     while response.status_code == 200:
         pokemon_client, pokemon_server = xml_pokemon.parse(response.content.decode('utf-8'))
+        print(pokemon_server)
         if battle.battle_ended(pokemon_client, pokemon_server): return
         battle.print_battle_status(pokemon_client, pokemon_server)
         pokemon_client.print_attacks()

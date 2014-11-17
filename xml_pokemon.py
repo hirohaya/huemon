@@ -330,6 +330,7 @@ def parse(xml):
                 client_pokemon_move4 = moves.create_move_dictionary(client_pokemon_move4_id, client_pokemon_move4_name, client_pokemon_move4_type, client_pokemon_move4_power_points, client_pokemon_move4_power, client_pokemon_move4_accuracy, client_pokemon_move4_power_points)
                 i = 0
                 j = 0
+                skill = 0
                 continue
         else: # server pokemon
             if child.tag == "name" and i == 0:

@@ -16,7 +16,7 @@
       <name>Struggle</name>
       <type>Normal</type>
       <power>50</power>
-      <accuracy>100.0</accuracy>
+      <accuracy>1.0</accuracy>
       <power_points>1</power_points>
       <id>1</id>
       <name>Psychic</name>
@@ -31,17 +31,17 @@
       <accuracy>1.0</accuracy>
       <power_points>20</power_points>
       <id>3</id>
-      <name>Tackle</name>
-      <type>Normal</type>
-      <power>35</power>
-      <accuracy>0.95</accuracy>
-      <power_points>35</power_points>
-      <id>4</id>
       <name>Swift</name>
       <type>Normal</type>
       <power>60</power>
       <accuracy>1.0</accuracy>
       <power_points>20</power_points>
+      <id>4</id>
+      <name>Confusion</name>
+      <type>Psychic</type>
+      <power>50</power>
+      <accuracy>1.0</accuracy>
+      <power_points>25</power_points>
     </attacks>
   </pokemon>
   <pokemon>
@@ -60,7 +60,7 @@
       <name>Struggle</name>
       <type>Normal</type>
       <power>50</power>
-      <accuracy>100</accuracy>
+      <accuracy>1.0</accuracy>
       <power_points>1</power_points>
       <id>1</id>
       <name>Psychic</name>
@@ -81,11 +81,11 @@
       <accuracy>1.0</accuracy>
       <power_points>25</power_points>
       <id>4</id>
-      <name>Swift</name>
+      <name>Tackle</name>
       <type>Normal</type>
-      <power>60</power>
-      <accuracy>1.0</accuracy>
-      <power_points>20</power_points>
+      <power>35</power>
+      <accuracy>0.95</accuracy>
+      <power_points>35</power_points>
     </attacks>
   </pokemon>
 </battle_state>
