@@ -91,7 +91,6 @@ def generate(pokemon1, pokemon2 = None):
                         xml_file.write("      <accuracy>"+str(pokemon1.move4.move_acc)+"</accuracy>\n")
                         xml_file.write("      <power_points>"+str(pokemon1.move4.move_pp)+"</power_points>\n")
                     skill = skill + 1
-
             if child.tag == "power_points":
                 xml_file.write("    </attacks>\n")
                 xml_file.write("  </pokemon>\n")
@@ -103,37 +102,82 @@ def generate(pokemon1, pokemon2 = None):
         else:
             if pokemon2 != None:
                 if child.tag == "pokemon":
+                    xml_file.write("  <pokemon>\n")
                     continue
                 if child.tag == "name" and i == 0:
+                    xml_file.write("    <name>"+pokemon2.name+"</name>\n")
                     i = i + 1
                     continue
                 if child.tag == "level":
+                    xml_file.write("    <level>"+str(pokemon2.level)+"</level>\n")
                     continue
                 if child.tag == "health":
+                    xml_file.write("    <attributes>\n")
+                    xml_file.write("      <health>"+str(pokemon2.hp)+"</health>\n")
                     continue
                 if child.tag == "attack":
+                    xml_file.write("      <attack>"+str(pokemon2.attack)+"</attack>\n")
                     continue
                 if child.tag == "defense":
+                    xml_file.write("      <defense>"+str(pokemon2.defense)+"</defense>\n")
                     continue
                 if child.tag == "speed":
+                    xml_file.write("      <speed>"+str(pokemon2.speed)+"</speed>\n")
                     continue
                 if child.tag == "special":
+                    xml_file.write("      <special>"+str(pokemon2.special)+"</special>\n")
+                    xml_file.write("    </attributes>\n")
                     continue
                 if child.tag == "type" and j == 0:
+                    xml_file.write("    <type>"+pokemon2.type1 + "/" + pokemon2.type2+"</type>\n")
                     j = j + 1
                     continue
-                if child.tag == "id":
-                    continue
-                if child.tag == "name" and i == 1:
-                    continue
-                if child.tag == "type" and j == 1:
-                    continue
-                if child.tag == "power":
-                    continue
-                if child.tag == "accuracy":
-                    continue
+                if child.tag == "attacks":
+                    xml_file.write("    <attacks>\n")
+                    skill = 0
+                    while skill < 5:
+                        if skill == 0:
+                            xml_file.write("      <id>0</id>\n")
+                            xml_file.write("      <name>"+pokemon2.move0.move_name+"</name>\n")
+                            xml_file.write("      <type>"+pokemon2.move0.move_type+"</type>\n")
+                            xml_file.write("      <power>"+str(pokemon2.move0.move_power)+"</power>\n")
+                            xml_file.write("      <accuracy>"+str(pokemon2.move0.move_acc)+"</accuracy>\n")
+                            xml_file.write("      <power_points>"+str(pokemon2.move0.move_pp)+"</power_points>\n")
+                        if skill == 1:
+                            xml_file.write("      <id>1</id>\n")
+                            xml_file.write("      <name>"+pokemon2.move1.move_name+"</name>\n")
+                            xml_file.write("      <type>"+pokemon2.move1.move_type+"</type>\n")
+                            xml_file.write("      <power>"+str(pokemon2.move1.move_power)+"</power>\n")
+                            xml_file.write("      <accuracy>"+str(pokemon2.move1.move_acc)+"</accuracy>\n")
+                            xml_file.write("      <power_points>"+str(pokemon2.move1.move_pp)+"</power_points>\n")
+                        if skill == 2:
+                            xml_file.write("      <id>2</id>\n")
+                            xml_file.write("      <name>"+pokemon2.move2.move_name+"</name>\n")
+                            xml_file.write("      <type>"+pokemon2.move2.move_type+"</type>\n")
+                            xml_file.write("      <power>"+str(pokemon2.move2.move_power)+"</power>\n")
+                            xml_file.write("      <accuracy>"+str(pokemon2.move2.move_acc)+"</accuracy>\n")
+                            xml_file.write("      <power_points>"+str(pokemon2.move2.move_pp)+"</power_points>\n")
+                        if skill == 3:
+                            xml_file.write("      <id>3</id>\n")
+                            xml_file.write("      <name>"+pokemon2.move3.move_name+"</name>\n")
+                            xml_file.write("      <type>"+pokemon2.move3.move_type+"</type>\n")
+                            xml_file.write("      <power>"+str(pokemon2.move3.move_power)+"</power>\n")
+                            xml_file.write("      <accuracy>"+str(pokemon2.move3.move_acc)+"</accuracy>\n")
+                            xml_file.write("      <power_points>"+str(pokemon2.move3.move_pp)+"</power_points>\n")
+                        if skill == 4:
+                            xml_file.write("      <id>4</id>\n")
+                            xml_file.write("      <name>"+pokemon2.move4.move_name+"</name>\n")
+                            xml_file.write("      <type>"+pokemon2.move4.move_type+"</type>\n")
+                            xml_file.write("      <power>"+str(pokemon2.move4.move_power)+"</power>\n")
+                            xml_file.write("      <accuracy>"+str(pokemon2.move4.move_acc)+"</accuracy>\n")
+                            xml_file.write("      <power_points>"+str(pokemon2.move4.move_pp)+"</power_points>\n")
+                        skill = skill + 1
                 if child.tag == "power_points":
-                    continue
+                    xml_file.write("    </attacks>\n")
+                    xml_file.write("  </pokemon>\n")
+                    k = k + 1
+                    i = 0
+                    j = 0
     xml_file.write("</battle_state>\n")
     xml_file.close()
     xml_file = open("pokemon.xml", "r")
