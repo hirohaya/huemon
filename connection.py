@@ -45,8 +45,29 @@ def client(server_address):
             response = requests.post('http://' + server_address + ':5000/battle_state/attack/0')
             return
         pokemon_client.print_attacks()
-        option = input("Choose the attack: ")
-        print()
+        while True:
+            if pokemon_client.move1.remaining_pp == 0 and pokemon_client.move2.remaining_pp == 0 and pokemon_client.move3.remaining_pp == 0 and pokemon_client.move4.remaining_pp == 0:
+                print("\nYour Pokemon have no more PP left to use his skills. Your Pokemon used Struggle.\n")
+                option = 0
+            else:
+                print("Choose the attack: ")
+                option = input()
+                if option == '1' and pokemon_client.move1.remaining_pp > 0:
+                    pokemon_client.move1.remaining_pp  -= 1
+                    break
+                elif option == '2' and pokemon_client.move2.remaining_pp > 0:
+                    pokemon_client.move2.remaining_pp  -= 1
+                    break
+                elif option == '3' and pokemon_client.move3.remaining_pp > 0:
+                    pokemon_client.move3.remaining_pp  -= 1
+                    break
+                elif option == '4' and pokemon_client.move4.remaining_pp > 0:
+                    pokemon_client.move4.remaining_pp  -= 1
+                    break
+                else:
+                    print("\nInvalid option. It needs to be a number from 1 to 4 with remaining PP.\n")
+        xml = xml_pokemon.generate(pokemon_client, pokemon_server)
+        print(xml)
         response = requests.post('http://' + server_address + ':5000/battle_state/attack/' + option, data = xml, headers={'Content-Type': 'application/xml'})
 
 
@@ -60,6 +81,7 @@ def battle_start():
     if battle == None: battle = Battle(server = True)
     else: abort(403)
     xml = request.data.decode('utf-8')
+    print(xml)
     pokemon_client, dummy = xml_pokemon.parse(xml)
     pokemon_server = Pokemon.create_pokemon()
     battle.print_battle_status(pokemon_client, pokemon_server)
