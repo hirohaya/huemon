@@ -80,8 +80,6 @@ def client(server_address):
                 else:
                     print("\nInvalid option. It needs to be a number from 1 to 4 with remaining PP.\n")
         xml = xml_pokemon.generate(pokemon_client, pokemon_server)
-        pokemon_client.announce_damage_network(pokemon_server, int(option))
-        battle.print_battle_status(pokemon_client, pokemon_server)
         response = requests.post('http://' + server_address + ':5000/battle/attack/' + option, data = xml, headers={'Content-Type': 'application/xml'})
         not_first_round = True
 
