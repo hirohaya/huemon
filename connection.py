@@ -47,6 +47,7 @@ def client(server_address):
                 return
         else:
             pokemon_client, pokemon_server = xml_pokemon.parse(response.content.decode('utf-8'))
+            battle.print_battle_status(pokemon_client, pokemon_server)
 
         pokemon_client.print_attacks()
         while True:
