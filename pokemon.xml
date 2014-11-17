@@ -2,13 +2,57 @@
 <battle_state>
   <pokemon>
     <name>Mew</name>
-    <level>1</level>
+    <level>99</level>
     <attributes>
-      <health>0</health>
-      <attack>2</attack>
-      <defense>3</defense>
-      <speed>5</speed>
-      <special>4</special>
+      <health>90</health>
+      <attack>1</attack>
+      <defense>2</defense>
+      <speed>4</speed>
+      <special>3</special>
+    </attributes>
+    <type>Psychic/Blank</type>
+    <attacks>
+      <id>0</id>
+      <name>Struggle</name>
+      <type>Normal</type>
+      <power>50</power>
+      <accuracy>1.0</accuracy>
+      <power_points>1</power_points>
+      <id>1</id>
+      <name>Psychic</name>
+      <type>Psychic</type>
+      <power>90</power>
+      <accuracy>1.0</accuracy>
+      <power_points>10</power_points>
+      <id>2</id>
+      <name>Psybeam</name>
+      <type>Psychic</type>
+      <power>65</power>
+      <accuracy>1.0</accuracy>
+      <power_points>20</power_points>
+      <id>3</id>
+      <name>Take Down</name>
+      <type>Normal</type>
+      <power>90</power>
+      <accuracy>0.85</accuracy>
+      <power_points>20</power_points>
+      <id>4</id>
+      <name>Swift</name>
+      <type>Normal</type>
+      <power>60</power>
+      <accuracy>1.0</accuracy>
+      <power_points>20</power_points>
+    </attacks>
+  </pokemon>
+  <pokemon>
+    <name>Mewtwo</name>
+    <level>99</level>
+    <attributes>
+      <health>89</health>
+      <attack>6</attack>
+      <defense>6</defense>
+      <speed>6</speed>
+      <special>6</special>
     </attributes>
     <type>Psychic/Blank</type>
     <attacks>
@@ -37,54 +81,10 @@
       <accuracy>1.0</accuracy>
       <power_points>25</power_points>
       <id>4</id>
-      <name>Take Down</name>
-      <type>Normal</type>
-      <power>90</power>
-      <accuracy>0.85</accuracy>
-      <power_points>20</power_points>
-    </attacks>
-  </pokemon>
-  <pokemon>
-    <name>Mewtwo</name>
-    <level>6</level>
-    <attributes>
-      <health>6</health>
-      <attack>6</attack>
-      <defense>6</defense>
-      <speed>6</speed>
-      <special>6</special>
-    </attributes>
-    <type>Psychic/Blank</type>
-    <attacks>
-      <id>0</id>
-      <name>Struggle</name>
-      <type>Normal</type>
-      <power>50</power>
-      <accuracy>1.0</accuracy>
-      <power_points>1</power_points>
-      <id>1</id>
-      <name>Psychic</name>
-      <type>Psychic</type>
-      <power>90</power>
-      <accuracy>1.0</accuracy>
-      <power_points>10</power_points>
-      <id>2</id>
-      <name>Psybeam</name>
-      <type>Psychic</type>
-      <power>65</power>
-      <accuracy>1.0</accuracy>
-      <power_points>20</power_points>
-      <id>3</id>
       <name>Swift</name>
       <type>Normal</type>
       <power>60</power>
       <accuracy>1.0</accuracy>
-      <power_points>20</power_points>
-      <id>4</id>
-      <name>Take Down</name>
-      <type>Normal</type>
-      <power>90</power>
-      <accuracy>0.85</accuracy>
       <power_points>20</power_points>
     </attacks>
   </pokemon>

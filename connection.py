@@ -37,7 +37,7 @@ def client(server_address):
             return
         pokemon_client.print_attacks()
         option = input()
-        response = requests.post('http://' + server_address + ':5000/battle_state/attack/' + option)
+        response = requests.post('http://' + server_address + ':5000/battle_state/attack/' + option, data = xml, headers={'Content-Type': 'application/xml'})
 
 
 def server():
