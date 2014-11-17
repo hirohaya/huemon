@@ -3,7 +3,7 @@
 
 from random import random, randrange
 import moves
-from moves import print_moves, move_choice, move_dictionary, create_move_dictionary
+from moves import print_moves, move_choice, create_move, create_move_dictionary
 from pokedex import pokedex, pokemon_choice, poketype, poke_type_chart
 
 class Pokemon(object):
@@ -17,11 +17,11 @@ class Pokemon(object):
         self.defense = defense
         self.special = special
         self.speed = speed
-        self.move0 = move_dictionary(move0)
-        self.move1 = move_dictionary(move1)
-        self.move2 = move_dictionary(move2)
-        self.move3 = move_dictionary(move3)
-        self.move4 = move_dictionary(move4)
+        self.move0 = create_move(move0)
+        self.move1 = create_move(move1)
+        self.move2 = create_move(move2)
+        self.move3 = create_move(move3)
+        self.move4 = create_move(move4)
 
 
     #Set the pokemon's name at the inicialization
@@ -223,12 +223,12 @@ class Pokemon(object):
                     sure = "Yes"
                     decision = "Yes"
                     
-                    self = Pokemon(name, type1, type2, hp, level, attack, defense, special, speed, move0, move1, move2, move3, move4)
+                    pkmn = Pokemon(name, type1, type2, hp, level, attack, defense, special, speed, move0, move1, move2, move3, move4)
                 #Troll user. You have to answer Yes or no!
                 else:
                     print("\nWell... I was expecting for a Yes or a No, so please, don't make the things hard and answer my question, I don't have all day.\n")
                     decision = "No"
-        return self
+        return pkmn
 
 
     def subtract_damage(self, damage):
