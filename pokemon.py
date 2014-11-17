@@ -3,7 +3,7 @@
 
 from random import random, randrange
 import moves
-from moves import print_moves, move_choice
+from moves import print_moves, move_choice, pokemon_moves, attr_move
 from pokedex import pokedex, pokemon_choice, poketype, poke_type_chart
 
 class Pokemon(object):
@@ -17,11 +17,11 @@ class Pokemon(object):
         self.defense = defense
         self.special = special
         self.speed = speed
-        self.move0 = move0
-        self.move1 = move1
-        self.move2 = move2
-        self.move3 = move3
-        self.move4 = move4
+        self.move0 = attr_move(move0)
+        self.move1 = attr_move(move1)
+        self.move2 = attr_move(move2)
+        self.move3 = attr_move(move3)
+        self.move4 = attr_move(move4)
 
 
     #Set the pokemon's name at the inicialization
