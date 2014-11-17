@@ -3,7 +3,7 @@
 
 from random import random, randrange
 import moves
-from moves import print_moves, move_choice
+from moves import print_moves, move_choice, pokemon_moves, attr_move
 from pokedex import pokedex, pokemon_choice, poketype, poke_type_chart
 
 class Pokemon(object):
@@ -17,11 +17,11 @@ class Pokemon(object):
         self.defense = defense
         self.special = special
         self.speed = speed
-        self.move0 = move0
-        self.move1 = move1
-        self.move2 = move2
-        self.move3 = move3
-        self.move4 = move4
+        self.move0 = attr_move(move0)
+        self.move1 = attr_move(move1)
+        self.move2 = attr_move(move2)
+        self.move3 = attr_move(move3)
+        self.move4 = attr_move(move4)
 
 
     #Set the pokemon's name at the inicialization
@@ -209,11 +209,12 @@ class Pokemon(object):
                     break
                 #The user typed he is sure
                 elif(decision.capitalize() == "Yes"):
-                    move0 = moves.Moves(move0_name, move0_type, move0_pp, move0_power, move0_accuracy, move0_pp) #Struggle
-                    move1 = moves.Moves(move1_name, move1_type, move1_pp, move1_power, move1_accuracy, move1_pp)
-                    move2 = moves.Moves(move2_name, move2_type, move2_pp, move2_power, move2_accuracy, move2_pp)
-                    move3 = moves.Moves(move3_name, move3_type, move3_pp, move3_power, move3_accuracy, move3_pp)
-                    move4 = moves.Moves(move4_name, move4_type, move4_pp, move4_power, move4_accuracy, move4_pp)
+                    move0 = moves.pokemon_moves(move0_name, move0_type, move0_pp, move0_power, move0_accuracy, move0_pp) #Struggle
+                    move0 = moves.pokemon_moves(move0_name, move0_type, move0_pp, move0_power, move0_accuracy, move0_pp)
+                    move1 = moves.pokemon_moves(move1_name, move1_type, move1_pp, move1_power, move1_accuracy, move1_pp)
+                    move2 = moves.pokemon_moves(move2_name, move2_type, move2_pp, move2_power, move2_accuracy, move2_pp)
+                    move3 = moves.pokemon_moves(move3_name, move3_type, move3_pp, move3_power, move3_accuracy, move3_pp)
+                    move4 = moves.pokemon_moves(move4_name, move4_type, move4_pp, move4_power, move4_accuracy, move4_pp)
                     print("\nOk! Your POKeMON has been created! Let's continue!\n\n")
                     sure = "Yes"
                     decision = "Yes"
