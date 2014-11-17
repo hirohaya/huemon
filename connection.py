@@ -60,15 +60,23 @@ def client(server_address):
                 if option == '1' and pokemon_client.move1.remaining_pp > 0:
                     pokemon_client.move1.remaining_pp  -= 1
                     break
+                elif option == '1' and pokemon_client.move1.remaining_pp <= 0:
+                    print("You have no more available PP to use this skill!")
                 elif option == '2' and pokemon_client.move2.remaining_pp > 0:
                     pokemon_client.move2.remaining_pp  -= 1
                     break
+                elif option == '2' and pokemon_client.move1.remaining_pp <= 0:
+                    print("You have no more available PP to use this skill!")
                 elif option == '3' and pokemon_client.move3.remaining_pp > 0:
                     pokemon_client.move3.remaining_pp  -= 1
                     break
+                elif option == '3' and pokemon_client.move1.remaining_pp <= 0:
+                    print("You have no more available PP to use this skill!")
                 elif option == '4' and pokemon_client.move4.remaining_pp > 0:
                     pokemon_client.move4.remaining_pp  -= 1
                     break
+                elif option == '4' and pokemon_client.move1.remaining_pp <= 0:
+                    print("You have no more available PP to use this skill!")
                 else:
                     print("\nInvalid option. It needs to be a number from 1 to 4 with remaining PP.\n")
         xml = xml_pokemon.generate(pokemon_client, pokemon_server)
