@@ -71,7 +71,8 @@ def client(server_address):
 
 
 def server():
-    app.run(debug=True)
+    print("Waiting for a client...")
+    app.run()
 
 
 @app.route("/battle_state", methods=['POST'])
