@@ -8,8 +8,13 @@ from pokedex import *
 
 class TestPokemonTextGame(unittest.TestCase):
     def setUp(self):
-        self.pokemon1 = Pokemon()
-        self.pokemon2 = Pokemon()
+        self.move0 = moves.create_move_dictionary(0, "Struggle", "Normal", 1, 50, 1.0, 1)
+        self.move1 = moves.create_move_dictionary(1, "Psychic", "Psychic", 10, 90, 1.0, 10)
+        self.move2 = moves.create_move_dictionary(2, "Psybeam", "Psybeam", 20, 65, 1.0, 20)
+        self.move3 = moves.create_move_dictionary(3, "Confusion", "Psychic", 25, 50, 1.0, 25)
+        self.move4 = moves.create_move_dictionary(4, "Swift", "Normal", 20, 60, 1.0, 20)
+        self.pokemon1 = Pokemon("Mew", "Psychic", "Blank", 100, 99, 20, 20, 20, 20, self.move0, self.move1, self.move2, self.move3, self.move4)
+        self.pokemon2 = Pokemon("Mewtwo", "Psychic", "Blank", 200, 99, 25, 25, 25, 25, self.move0, self.move1, self.move2, self.move3, self.move4)
         self.damage = 40
         self.hp = self.pokemon1.hp
 
