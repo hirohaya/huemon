@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-
 from battle import Battle
 from pokemon import Pokemon
 import xml_pokemon
@@ -50,7 +49,7 @@ def battle_start():
     if battle == None: battle = Battle(server = True)
     else: abort(403)
     xml = request.data.decode('utf-8')
-    pokemon_client = xml_pokemon.parse(xml)
+    pokemon_client, dummy = xml_pokemon.parse(xml)
     pokemon_server = Pokemon.create_pokemon()
     if pokemon_server.speed > pokemon_client.speed:
         pokemon_server.perform_attack(pokemon_client)
