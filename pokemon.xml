@@ -4,11 +4,11 @@
     <name>Mew</name>
     <level>99</level>
     <attributes>
-      <health>95</health>
-      <attack>1</attack>
-      <defense>2</defense>
-      <speed>4</speed>
-      <special>3</special>
+      <health>100</health>
+      <attack>20</attack>
+      <defense>20</defense>
+      <speed>20</speed>
+      <special>20</special>
     </attributes>
     <type>Psychic/Blank</type>
     <attacks>
@@ -23,69 +23,25 @@
       <type>Psychic</type>
       <power>90</power>
       <accuracy>1.0</accuracy>
-      <power_points>9</power_points>
+      <power_points>10</power_points>
       <id>2</id>
       <name>Psybeam</name>
-      <type>Psychic</type>
+      <type>Psybeam</type>
       <power>65</power>
       <accuracy>1.0</accuracy>
       <power_points>20</power_points>
       <id>3</id>
-      <name>Swift</name>
-      <type>Normal</type>
-      <power>60</power>
-      <accuracy>1.0</accuracy>
-      <power_points>20</power_points>
-      <id>4</id>
-      <name>Take Down</name>
-      <type>Normal</type>
-      <power>90</power>
-      <accuracy>0.85</accuracy>
-      <power_points>20</power_points>
-    </attacks>
-  </pokemon>
-  <pokemon>
-    <name>Mewtwo</name>
-    <level>99</level>
-    <attributes>
-      <health>96</health>
-      <attack>1</attack>
-      <defense>2</defense>
-      <speed>6</speed>
-      <special>3</special>
-    </attributes>
-    <type>Psychic/Blank</type>
-    <attacks>
-      <id>0</id>
-      <name>Struggle</name>
-      <type>Normal</type>
-      <power>50</power>
-      <accuracy>1.0</accuracy>
-      <power_points>1</power_points>
-      <id>1</id>
-      <name>Psychic</name>
-      <type>Psychic</type>
-      <power>90</power>
-      <accuracy>1.0</accuracy>
-      <power_points>8</power_points>
-      <id>2</id>
-      <name>Psybeam</name>
-      <type>Psychic</type>
-      <power>65</power>
-      <accuracy>1.0</accuracy>
-      <power_points>20</power_points>
-      <id>3</id>
-      <name>Swift</name>
-      <type>Normal</type>
-      <power>60</power>
-      <accuracy>1.0</accuracy>
-      <power_points>20</power_points>
-      <id>4</id>
       <name>Confusion</name>
       <type>Psychic</type>
       <power>50</power>
       <accuracy>1.0</accuracy>
       <power_points>25</power_points>
+      <id>4</id>
+      <name>Swift</name>
+      <type>Normal</type>
+      <power>60</power>
+      <accuracy>1.0</accuracy>
+      <power_points>20</power_points>
     </attacks>
   </pokemon>
 </battle_state>

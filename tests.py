@@ -5,6 +5,8 @@ import unittest
 from pokemon import *
 from moves import *
 from pokedex import *
+from connection import *
+from xml_pokemon import *
 
 class TestPokemonTextGame(unittest.TestCase):
     def setUp(self):
@@ -17,7 +19,6 @@ class TestPokemonTextGame(unittest.TestCase):
         self.pokemon2 = Pokemon("Mewtwo", "Psychic", "Blank", 200, 99, 25, 25, 25, 25, self.move0, self.move1, self.move2, self.move3, self.move4)
         self.damage = 40
         self.hp = self.pokemon1.hp
-
 
     def test_subtract_damage(self):
         expected_hp = self.pokemon1.hp - self.damage
@@ -45,7 +46,6 @@ class TestPokemonTextGame(unittest.TestCase):
         #The damage must be inside a given interval, delimited by the maximum and minimum values of the modifier (as the rest of the formula is static to the respectives pokemons involved)
         self.assertGreaterEqual(self.pokemon1.calculate_damage(self.pokemon1.move1, self.pokemon2), expected_minimum_damage)
         self.assertLessEqual(self.pokemon1.calculate_damage(self.pokemon1.move1, self.pokemon2), expected_maximum_damage)
-
 
 if __name__ == '__main__':
     unittest.main()
