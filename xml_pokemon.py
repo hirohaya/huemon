@@ -201,7 +201,7 @@ def parse(xml):
 			if child.tag == "power_points" and skill == 0:
 				client_pokemon_move0_power_points = child.text
 				skill = skill + 1
-				client_pokemon_move0 = moves.Moves(client_pokemon_move0_id, client_pokemon_move0_name, client_pokemon_move0_type, client_pokemon_move0_power_points, client_pokemon_move0_power, client_pokemon_move0_accuracy, client_pokemon_move0_power_points)
+				client_pokemon_move0 = moves.create_move_dictionary(client_pokemon_move0_id, client_pokemon_move0_name, client_pokemon_move0_type, client_pokemon_move0_power_points, client_pokemon_move0_power, client_pokemon_move0_accuracy, client_pokemon_move0_power_points)
 				continue
 			if child.tag == "id" and skill == 1:
 				client_pokemon_move1_id = child.text
@@ -221,7 +221,7 @@ def parse(xml):
 			if child.tag == "power_points" and skill == 1:
 				client_pokemon_move1_power_points = child.text
 				skill = skill + 1
-				client_pokemon_move1 = moves.Moves(client_pokemon_move1_id, client_pokemon_move1_name, client_pokemon_move1_type, client_pokemon_move1_power_points, client_pokemon_move1_power, client_pokemon_move1_accuracy, client_pokemon_move1_power_points)
+				client_pokemon_move1 = moves.create_move_dictionary(client_pokemon_move1_id, client_pokemon_move1_name, client_pokemon_move1_type, client_pokemon_move1_power_points, client_pokemon_move1_power, client_pokemon_move1_accuracy, client_pokemon_move1_power_points)
 				continue
 			if child.tag == "id" and skill == 2:
 				client_pokemon_move2_id = child.text
@@ -241,7 +241,7 @@ def parse(xml):
 			if child.tag == "power_points" and skill == 2:
 				client_pokemon_move2_power_points = child.text
 				skill = skill + 1
-				client_pokemon_move2 = moves.Moves(client_pokemon_move2_id, client_pokemon_move2_name, client_pokemon_move2_type, client_pokemon_move2_power_points, client_pokemon_move2_power, client_pokemon_move2_accuracy, client_pokemon_move2_power_points)
+				client_pokemon_move2 = moves.create_move_dictionary(client_pokemon_move2_id, client_pokemon_move2_name, client_pokemon_move2_type, client_pokemon_move2_power_points, client_pokemon_move2_power, client_pokemon_move2_accuracy, client_pokemon_move2_power_points)
 				continue
 			if child.tag == "id" and skill == 3:
 				client_pokemon_move3_id = child.text
@@ -261,7 +261,7 @@ def parse(xml):
 			if child.tag == "power_points" and skill == 3:
 				client_pokemon_move3_power_points = child.text
 				skill = skill + 1
-				client_pokemon_move3 = moves.Moves(client_pokemon_move3_id, client_pokemon_move3_name, client_pokemon_move3_type, client_pokemon_move3_power_points, client_pokemon_move3_power, client_pokemon_move3_accuracy, client_pokemon_move3_power_points)
+				client_pokemon_move3 = moves.create_move_dictionary(client_pokemon_move3_id, client_pokemon_move3_name, client_pokemon_move3_type, client_pokemon_move3_power_points, client_pokemon_move3_power, client_pokemon_move3_accuracy, client_pokemon_move3_power_points)
 				continue
 			if child.tag == "id" and skill == 4:
 				client_pokemon_move4_id = child.text
@@ -282,11 +282,11 @@ def parse(xml):
 				client_pokemon_move4_power_points = child.text
 				skill = skill + 1
 				client_pokemon_parsed = True
-				client_pokemon_move4 = moves.Moves(client_pokemon_move4_id, client_pokemon_move4_name, client_pokemon_move4_type, client_pokemon_move4_power_points, client_pokemon_move4_power, client_pokemon_move4_accuracy, client_pokemon_move4_power_points)
+				client_pokemon_move4 = moves.create_move_dictionary(client_pokemon_move4_id, client_pokemon_move4_name, client_pokemon_move4_type, client_pokemon_move4_power_points, client_pokemon_move4_power, client_pokemon_move4_accuracy, client_pokemon_move4_power_points)
 				i = 0
 				j = 0
 				continue
-		else: # pokemon do servidor
+		else: # server pokemon
 			if child.tag == "name" and i == 0:
 				server_pokemon_name = child.text
 				print
@@ -336,7 +336,7 @@ def parse(xml):
 			if child.tag == "power_points" and skill == 0:
 				server_pokemon_move0_power_points = child.text
 				skill = skill + 1
-				server_pokemon_move0 = moves.Moves(server_pokemon_move0_id, server_pokemon_move0_name, server_pokemon_move0_type, server_pokemon_move0_power_points, server_pokemon_move0_power, server_pokemon_move0_accuracy, server_pokemon_move0_power_points)
+				server_pokemon_move0 = moves.create_move_dictionary(server_pokemon_move0_id, server_pokemon_move0_name, server_pokemon_move0_type, server_pokemon_move0_power_points, server_pokemon_move0_power, server_pokemon_move0_accuracy, server_pokemon_move0_power_points)
 				continue
 			if child.tag == "id" and skill == 1:
 				server_pokemon_move1_id = child.text
@@ -356,7 +356,7 @@ def parse(xml):
 			if child.tag == "power_points" and skill == 1:
 				server_pokemon_move1_power_points = child.text
 				skill = skill + 1
-				server_pokemon_move1 = moves.Moves(server_pokemon_move1_id, server_pokemon_move1_name, server_pokemon_move1_type, server_pokemon_move1_power_points, server_pokemon_move1_power, server_pokemon_move1_accuracy, server_pokemon_move1_power_points)
+				server_pokemon_move1 = moves.create_move_dictionary(server_pokemon_move1_id, server_pokemon_move1_name, server_pokemon_move1_type, server_pokemon_move1_power_points, server_pokemon_move1_power, server_pokemon_move1_accuracy, server_pokemon_move1_power_points)
 				continue
 			if child.tag == "id" and skill == 2:
 				server_pokemon_move2_id = child.text
@@ -376,7 +376,7 @@ def parse(xml):
 			if child.tag == "power_points" and skill == 2:
 				server_pokemon_move2_power_points = child.text
 				skill = skill + 1
-				server_pokemon_move2 = moves.Moves(server_pokemon_move2_id, server_pokemon_move2_name, server_pokemon_move2_type, server_pokemon_move2_power_points, server_pokemon_move2_power, server_pokemon_move2_accuracy, server_pokemon_move2_power_points)
+				server_pokemon_move2 = moves.create_move_dictionary(server_pokemon_move2_id, server_pokemon_move2_name, server_pokemon_move2_type, server_pokemon_move2_power_points, server_pokemon_move2_power, server_pokemon_move2_accuracy, server_pokemon_move2_power_points)
 				continue
 			if child.tag == "id" and skill == 3:
 				server_pokemon_move3_id = child.text
@@ -396,7 +396,7 @@ def parse(xml):
 			if child.tag == "power_points" and skill == 3:
 				server_pokemon_move3_power_points = child.text
 				skill = skill + 1
-				server_pokemon_move3 = moves.Moves(server_pokemon_move3_id, server_pokemon_move3_name, server_pokemon_move3_type, server_pokemon_move3_power_points, server_pokemon_move3_power, server_pokemon_move3_accuracy, server_pokemon_move3_power_points)
+				server_pokemon_move3 = moves.create_move_dictionary(server_pokemon_move3_id, server_pokemon_move3_name, server_pokemon_move3_type, server_pokemon_move3_power_points, server_pokemon_move3_power, server_pokemon_move3_accuracy, server_pokemon_move3_power_points)
 				continue
 			if child.tag == "id" and skill == 4:
 				server_pokemon_move4_id = child.text
@@ -416,7 +416,7 @@ def parse(xml):
 			if child.tag == "power_points" and skill == 4:
 				server_pokemon_move4_power_points = child.text
 				skill = skill + 1
-				server_pokemon_move4 = moves.Moves(server_pokemon_move4_id, server_pokemon_move4_name, server_pokemon_move4_type, server_pokemon_move4_power_points, server_pokemon_move4_power, server_pokemon_move4_accuracy, server_pokemon_move4_power_points)
+				server_pokemon_move4 = moves.create_move_dictionary(server_pokemon_move4_id, server_pokemon_move4_name, server_pokemon_move4_type, server_pokemon_move4_power_points, server_pokemon_move4_power, server_pokemon_move4_accuracy, server_pokemon_move4_power_points)
 				server_pokemon_parsed = True
 				continue
 	pokemon1 = Pokemon(client_pokemon_name, client_pokemon_type1, client_pokemon_type2, client_pokemon_health, client_pokemon_level, client_pokemon_attack, client_pokemon_defense, client_pokemon_special, client_pokemon_speed, client_pokemon_move0, client_pokemon_move1, client_pokemon_move2, client_pokemon_move3, client_pokemon_move4)

@@ -107,13 +107,16 @@ def pokemon_moves_list():
                 'Wing Attack': 'Flying/35/35/100'}
     return moves_list
 
+
 def create_move_dictionary(ID, name, mtype, pp, power, accuracy, remaining_pp):
     move_dictionary = {'ID': ID, 'name': name, 'type': mtype, 'pp': pp, 'power': power, 'accuracy': accuracy, 'remaining_pp': remaining_pp}
     return move_dictionary
 
-def move_dictionary(move_dictionary):
+
+def create_move(move_dictionary):
     move = Moves(move_dictionary['ID'], move_dictionary['name'], move_dictionary['type'], move_dictionary['pp'], move_dictionary['power'], move_dictionary['accuracy'], move_dictionary['pp'])
     return move
+
 
 def print_moves():
     print("Skill Name: Type/PP/Power/Accuracy")

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <battle_state>
   <pokemon>
-    <name>Mew</name>
-    <level>3</level>
+    <name>Pikachu</name>
+    <level>20</level>
     <attributes>
-      <health>1</health>
-      <attack>2</attack>
-      <defense>3</defense>
-      <speed>6</speed>
-      <special>4</special>
+      <health>130</health>
+      <attack>15</attack>
+      <defense>14</defense>
+      <speed>13</speed>
+      <special>10</special>
     </attributes>
-    <type>Psychic/Blank</type>
+    <type>Electric/Blank</type>
     <attacks>
       <id>0</id>
       <name>Struggle</name>
@@ -19,17 +19,17 @@
       <accuracy>100</accuracy>
       <power_points>1</power_points>
       <id>1</id>
-      <name>Psychic</name>
-      <type>Psychic</type>
-      <power>90</power>
-      <accuracy>1.0</accuracy>
+      <name>Thunder</name>
+      <type>Electric</type>
+      <power>120</power>
+      <accuracy>0.7</accuracy>
       <power_points>10</power_points>
       <id>2</id>
-      <name>Psybeam</name>
-      <type>Psychic</type>
-      <power>65</power>
+      <name>Thundershock</name>
+      <type>Electric</type>
+      <power>40</power>
       <accuracy>1.0</accuracy>
-      <power_points>20</power_points>
+      <power_points>15</power_points>
       <id>3</id>
       <name>Take Down</name>
       <type>Normal</type>
@@ -37,10 +37,10 @@
       <accuracy>0.85</accuracy>
       <power_points>20</power_points>
       <id>4</id>
-      <name>Swift</name>
+      <name>Slam</name>
       <type>Normal</type>
-      <power>60</power>
-      <accuracy>1.0</accuracy>
+      <power>80</power>
+      <accuracy>0.75</accuracy>
       <power_points>20</power_points>
     </attacks>
   </pokemon>
