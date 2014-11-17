@@ -30,7 +30,14 @@ def client(server_address):
     xml = xml_pokemon.generate(pokemon_client, pokemon_server)
     response = requests.post('http://' + server_address + ':5000/battle_state', data = xml, headers={'Content-Type': 'application/xml'})
     while response.status_code == 200:
+        client_hp = pokemon_client.hp
+        if (pokemon_server != None):
+            server_hp = pokemon_server.hp
+            print_damage = True
+        else: print_damage = False
         pokemon_client, pokemon_server = xml_pokemon.parse(response.content.decode('utf-8'))
+        print (pokemon_server.name + " inflicted " + str(client_hp - pokemon_client.hp) + " points of damage in " + pokemon_client.name + "!")
+        if print_damage: print (pokemon_client.name + " inflicted " + str(server_hp - pokemon_server.hp) + " points of damage in " + pokemon_server.name + "!")
         battle.print_battle_status(pokemon_client, pokemon_server)
         if battle.battle_ended(pokemon_client, pokemon_server):
             response = requests.post('http://' + server_address + ':5000/battle_state/attack/0')
@@ -55,6 +62,12 @@ def battle_start():
     pokemon_server = Pokemon.create_pokemon()
     if pokemon_server.speed > pokemon_client.speed:
         battle.print_battle_status(pokemon_client, pokemon_server)
+        if battle.battle_ended(pokemon_client, pokemon_server):
+            func = request.environ.get('werkzeug.server.shutdown')
+            if func is None:
+                raise RuntimeError('Not running with the Werkzeug Server')
+            func()
+            return "Shuting down"
         pokemon_server.perform_attack(pokemon_client)
     xml = xml_pokemon.generate(pokemon_client, pokemon_server)
     return xml
@@ -62,7 +75,9 @@ def battle_start():
 
 @app.route("/battle_state/attack/<int:attack_id>", methods=['POST'])
 def battle_attack(attack_id):
+    server_hp = pokemon_server.hp
     pokemon_client.calculate_and_subtract_damage(pokemon_server, attack_id)
+    print (pokemon_client.name + " inflicted " + str(server_hp - pokemon_server.hp) + " points of damage in " + pokemon_server.name + "!")
     battle.print_battle_status(pokemon_client, pokemon_server)
     if battle.battle_ended(pokemon_client, pokemon_server):
         func = request.environ.get('werkzeug.server.shutdown')
