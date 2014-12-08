@@ -54,7 +54,7 @@ def client(server_address, local_player):
         if player == "user":
             option = pokemon_client.perform_attack_client()
         elif player == "ai":
-            option = pokemon_client.perform_attack_client_ai()
+            option = pokemon_client.perform_attack_client_ai(pokemon_server)
         xml = xml_pokemon.generate(pokemon_client, pokemon_server)
         response = requests.post('http://' + server_address + ':5000/battle/attack/' + option, data = xml, headers={'Content-Type': 'application/xml'})
         not_first_round = True
@@ -78,10 +78,10 @@ def battle_start():
     battle.print_battle_status(pokemon_client, pokemon_server)
     if pokemon_server.speed > pokemon_client.speed:
         if player == "user":
-            option = pokemon_server.perform_attack_server(pokemon_client)
+            option = pokemon_server.perform_attack_server()
         elif player == "ai":
             option = pokemon_server.perform_attack_server_ai(pokemon_client)
-        pokemon_server.announce_damage_server(pokemon_client, option)
+        pokemon_server.inflict_and_announce_damage_server(pokemon_client, option)
         battle.print_battle_status(pokemon_client, pokemon_server)
         if battle.battle_ended(pokemon_client, pokemon_server):
             server_shutdown()
@@ -99,10 +99,10 @@ def battle_attack(attack_id):
         server_shutdown()
     else:
         if player == "user":
-            option = pokemon_server.perform_attack_server(pokemon_client)
+            option = pokemon_server.perform_attack_server()
         elif player == "ai":
             option = pokemon_server.perform_attack_server_ai(pokemon_client)
-        pokemon_server.announce_damage_server(pokemon_client, option)
+        pokemon_server.inflict_and_announce_damage_server(pokemon_client, option)
         battle.print_battle_status(pokemon_client, pokemon_server)
         if battle.battle_ended(pokemon_client, pokemon_server):
             server_shutdown()

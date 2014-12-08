@@ -304,8 +304,21 @@ class Pokemon(object):
         print(self.name + " inflicted " + str(damage) + " points of damage in " + opponent.name + "!")
 
 
-    def perform_attack_client_ai(self):
-        pass
+    def perform_attack_client_ai(self, opponent):
+        option = self.choose_attack_ai(opponent)
+        if option == '1' and self.move1.remaining_pp > 0:
+            print(self.name + " is using " + self.move1.move_name + "!")
+            self.move1.remaining_pp -= 1
+        elif option == '2' and self.move2.remaining_pp > 0:
+            print(self.name + " is using " + self.move2.move_name + "!")
+            self.move2.remaining_pp -= 1
+        elif option == '3' and self.move3.remaining_pp > 0:
+            print(self.name + " is using " + self.move3.move_name + "!")
+            self.move3.remaining_pp -= 1
+        elif option == '4' and self.move4.remaining_pp > 0:
+            print(self.name + " is using " + self.move4.move_name + "!")
+            self.move4.remaining_pp -= 1
+        return option
 
 
     def perform_attack_client(self):
@@ -343,10 +356,19 @@ class Pokemon(object):
 
 
     def perform_attack_server_ai(self, opponent):
-        pass
+        option = self.choose_attack_ai(opponent)
+        if option == '1':
+            print(self.name + " is using " + self.move1.move_name + "!")
+        elif option == '2':
+            print(self.name + " is using " + self.move2.move_name + "!")
+        elif option == '3':
+            print(self.name + " is using " + self.move3.move_name + "!")
+        elif option == '4':
+            print(self.name + " is using " + self.move4.move_name + "!")
+        return option
 
 
-    def perform_attack_server(self, opponent):
+    def perform_attack_server(self):
         option = -1
         #The user will choose his skill
         if self.move1.remaining_pp == 0 and self.move2.remaining_pp == 0 and self.move3.remaining_pp == 0 and self.move4.remaining_pp == 0:
@@ -378,7 +400,7 @@ class Pokemon(object):
         return option
 
 
-    def announce_damage_server(self, opponent, option):
+    def inflict_and_announce_damage_server(self, opponent, option):
         damage = self.calculate_and_subtract_damage(opponent, option)
         print(self.name + " inflicted " + str(damage) + " points of damage in " + opponent.name + "!")
 
@@ -409,6 +431,10 @@ class Pokemon(object):
         print("2. "+self.move2.move_name+" ("+str(self.move2.remaining_pp)+"/"+str(self.move2.move_pp)+")")
         print("3. "+self.move3.move_name+" ("+str(self.move3.remaining_pp)+"/"+str(self.move3.move_pp)+")")
         print("4. "+self.move4.move_name+" ("+str(self.move4.remaining_pp)+"/"+str(self.move4.move_pp)+")")
+
+
+    def choose_attack_ai(self, opponent):
+        pass
 
 
     def calculate_damage(self, move, opponent):
