@@ -304,7 +304,50 @@ class Pokemon(object):
         print(self.name + " inflicted " + str(damage) + " points of damage in " + opponent.name + "!")
 
 
-    def perform_attack_network(self, opponent, option):
+    def perform_attack_client_ai(self):
+        pass
+
+
+    def perform_attack_client(self):
+        self.print_attacks()
+        while True:
+            if self.move1.remaining_pp == 0 and self.move2.remaining_pp == 0 and self.move3.remaining_pp == 0 and self.move4.remaining_pp == 0:
+                print("\nYour Pokemon have no more PP left to use his skills. Your Pokemon used Struggle.\n")
+                option = 0
+            else:
+                print("Choose the attack: ")
+                option = input()
+                if option == '1' and self.move1.remaining_pp > 0:
+                    self.move1.remaining_pp  -= 1
+                    break
+                elif option == '1' and self.move1.remaining_pp <= 0:
+                    print("You have no more available PP to use this skill!")
+                elif option == '2' and self.move2.remaining_pp > 0:
+                    self.move2.remaining_pp  -= 1
+                    break
+                elif option == '2' and self.move1.remaining_pp <= 0:
+                    print("You have no more available PP to use this skill!")
+                elif option == '3' and self.move3.remaining_pp > 0:
+                    self.move3.remaining_pp  -= 1
+                    break
+                elif option == '3' and self.move1.remaining_pp <= 0:
+                    print("You have no more available PP to use this skill!")
+                elif option == '4' and self.move4.remaining_pp > 0:
+                    self.move4.remaining_pp  -= 1
+                    break
+                elif option == '4' and self.move1.remaining_pp <= 0:
+                    print("You have no more available PP to use this skill!")
+                else:
+                    print("\nInvalid option. It needs to be a number from 1 to 4 with remaining PP.\n")
+        return option
+
+
+    def perform_attack_server_ai(self, opponent):
+        pass
+
+
+    def perform_attack_server(self, opponent):
+        option = -1
         #The user will choose his skill
         if self.move1.remaining_pp == 0 and self.move2.remaining_pp == 0 and self.move3.remaining_pp == 0 and self.move4.remaining_pp == 0:
             print("Your pokemon have no more PP left and will use Struggle!\n\n")
@@ -335,7 +378,7 @@ class Pokemon(object):
         return option
 
 
-    def announce_damage_network(self, opponent, option):
+    def announce_damage_server(self, opponent, option):
         damage = self.calculate_and_subtract_damage(opponent, option)
         print(self.name + " inflicted " + str(damage) + " points of damage in " + opponent.name + "!")
 

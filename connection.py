@@ -17,14 +17,16 @@ log.setLevel(logging.ERROR)
 battle = None
 pokemon_client = None
 pokemon_server = None
+player = None
 
 def local():
     global battle
     battle = Battle(local = True)
 
 
-def client(server_address):
-    global battle, pokemon_client, pokemon_server
+def client(server_address, local_player):
+    global battle, pokemon_client, pokemon_server, player
+    player = local_player
     battle = Battle(client = True)
     pokemon_client = Pokemon.create_pokemon()
     xml = xml_pokemon.generate(pokemon_client, pokemon_server)
@@ -49,49 +51,25 @@ def client(server_address):
             pokemon_client, pokemon_server = xml_pokemon.parse(response.content.decode('utf-8'))
             battle.print_battle_status(pokemon_client, pokemon_server)
 
-        pokemon_client.print_attacks()
-        while True:
-            if pokemon_client.move1.remaining_pp == 0 and pokemon_client.move2.remaining_pp == 0 and pokemon_client.move3.remaining_pp == 0 and pokemon_client.move4.remaining_pp == 0:
-                print("\nYour Pokemon have no more PP left to use his skills. Your Pokemon used Struggle.\n")
-                option = 0
-            else:
-                print("Choose the attack: ")
-                option = input()
-                if option == '1' and pokemon_client.move1.remaining_pp > 0:
-                    pokemon_client.move1.remaining_pp  -= 1
-                    break
-                elif option == '1' and pokemon_client.move1.remaining_pp <= 0:
-                    print("You have no more available PP to use this skill!")
-                elif option == '2' and pokemon_client.move2.remaining_pp > 0:
-                    pokemon_client.move2.remaining_pp  -= 1
-                    break
-                elif option == '2' and pokemon_client.move1.remaining_pp <= 0:
-                    print("You have no more available PP to use this skill!")
-                elif option == '3' and pokemon_client.move3.remaining_pp > 0:
-                    pokemon_client.move3.remaining_pp  -= 1
-                    break
-                elif option == '3' and pokemon_client.move1.remaining_pp <= 0:
-                    print("You have no more available PP to use this skill!")
-                elif option == '4' and pokemon_client.move4.remaining_pp > 0:
-                    pokemon_client.move4.remaining_pp  -= 1
-                    break
-                elif option == '4' and pokemon_client.move1.remaining_pp <= 0:
-                    print("You have no more available PP to use this skill!")
-                else:
-                    print("\nInvalid option. It needs to be a number from 1 to 4 with remaining PP.\n")
+        if player == "user":
+            option = pokemon_client.perform_attack_client()
+        elif player == "ai":
+            option = pokemon_client.perform_attack_client_ai()
         xml = xml_pokemon.generate(pokemon_client, pokemon_server)
         response = requests.post('http://' + server_address + ':5000/battle/attack/' + option, data = xml, headers={'Content-Type': 'application/xml'})
         not_first_round = True
 
 
-def server():
+def server(local_player):
+    global player
+    player = local_player
     print("Waiting for a client...")
     app.run()
 
 
 @app.route("/battle", methods=['POST'])
 def battle_start():
-    global battle, pokemon_client, pokemon_server
+    global battle, pokemon_client, pokemon_server, player
     if battle == None: battle = Battle(server = True)
     else: abort(403)
     xml = request.data.decode('utf-8')
@@ -99,8 +77,11 @@ def battle_start():
     pokemon_server = Pokemon.create_pokemon()
     battle.print_battle_status(pokemon_client, pokemon_server)
     if pokemon_server.speed > pokemon_client.speed:
-        option = pokemon_server.perform_attack_network(pokemon_client, -1)
-        pokemon_server.announce_damage_network(pokemon_client, option)
+        if player == "user":
+            option = pokemon_server.perform_attack_server(pokemon_client)
+        elif player == "ai":
+            option = pokemon_server.perform_attack_server_ai(pokemon_client)
+        pokemon_server.announce_damage_server(pokemon_client, option)
         battle.print_battle_status(pokemon_client, pokemon_server)
         if battle.battle_ended(pokemon_client, pokemon_server):
             server_shutdown()
@@ -117,8 +98,11 @@ def battle_attack(attack_id):
     if battle.battle_ended(pokemon_client, pokemon_server):
         server_shutdown()
     else:
-        option = pokemon_server.perform_attack_network(pokemon_client, -1)
-        pokemon_server.announce_damage_network(pokemon_client, option)
+        if player == "user":
+            option = pokemon_server.perform_attack_server(pokemon_client)
+        elif player == "ai":
+            option = pokemon_server.perform_attack_server_ai(pokemon_client)
+        pokemon_server.announce_damage_server(pokemon_client, option)
         battle.print_battle_status(pokemon_client, pokemon_server)
         if battle.battle_ended(pokemon_client, pokemon_server):
             server_shutdown()
