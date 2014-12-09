@@ -25,3 +25,4 @@ Considerações:
 
     - O enunciado não deixa explícito se o pokemon do cliente ou do servidor vem primeiro no xml. Nessa fase convencionamos que o primeiro fosse o pokemon cliente.
     - No modo de batalha remota, devido a estrutura pedida do XML, pela falta de um campo para guardar o máximo de PP que uma skill tem, no modo de batalha está sendo impresso a quantidade de pp/quantidade de pp, ao inves de quantidade de PP/maximo de pp.
+    - enunciado não deixa explicito, quanto a etapa 3, se a IA deve ser implementada no que foi feito na etapa 1. Como só existem referências ao que foi desenvolvido na etapa 2, nós não alteramos nada da etapa 1.
