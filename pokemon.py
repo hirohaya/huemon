@@ -432,32 +432,33 @@ class Pokemon(object):
         print("3. "+self.move3.move_name+" ("+str(self.move3.remaining_pp)+"/"+str(self.move3.move_pp)+")")
         print("4. "+self.move4.move_name+" ("+str(self.move4.remaining_pp)+"/"+str(self.move4.move_pp)+")")
 
+
     # Como o cálculo do dano é feito levando em conta os tipos dos pokemons não existe necessidade de fazer essa checagem
     # novamente para saber qual ataque é mais vantajoso, só é preciso calcular o maior dano entre as moves do pokemon.
     def choose_attack_ai(self, opponent):
         max_damage = 0
+        option = 0
         if self.move1.remaining_pp > 0:
-            current_damage = calculate_damage(self, self.move1, opponent)
+            current_damage = self.calculate_damage(self.move1, opponent)
             if current_damage > max_damage:
                 max_damage = current_damage
-                opcao = self.move1_id
+                option = self.move1.move_id
         if self.move2.remaining_pp > 0:
-            current_damage = calculate_damage(self, self.move2, opponent)
+            current_damage = self.calculate_damage(self.move2, opponent)
             if current_damage > max_damage:
                 max_damage = current_damage
-                opcao = self.move2_id
+                option = self.move2.move_id
         if self.move3.remaining_pp > 0:
-            current_damage = calculate_damage(self, self.move3, opponent)
+            current_damage = self.calculate_damage(self.move3, opponent)
             if current_damage > max_damage:
                 max_damage = current_damage
-                opcao = self.move3_id
+                option = self.move3.move_id
         if self.move4.remaining_pp > 0:
-            current_damage = calculate_damage(self, self.move4, opponent)
+            current_damage = self.calculate_damage(self.move4, opponent)
             if current_damage > max_damage:
                 max_damage = current_damage
-                opcao = self.move4_id
-        
-        return opcao
+                option = self.move4.move_id
+        return option
 
 
     def calculate_damage(self, move, opponent):
