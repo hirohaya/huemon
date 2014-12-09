@@ -493,8 +493,9 @@ class Pokemon(object):
 
         return damage
 
+
         #We are not considering critical hit and any other calculus that is reliable on randoms
-        def calculate_damage_ai(self, move, opponent):
+    def calculate_damage_ai(self, move, opponent):
         if self.type1 == move.move_type or self.type2 == move.move_type: stab = 1.5
         else: stab = 1.0
         level = self.level
