@@ -432,19 +432,33 @@ class Pokemon(object):
         print("3. "+self.move3.move_name+" ("+str(self.move3.remaining_pp)+"/"+str(self.move3.move_pp)+")")
         print("4. "+self.move4.move_name+" ("+str(self.move4.remaining_pp)+"/"+str(self.move4.move_pp)+")")
 
-
+# Como o cálculo do dano é feito levando em conta os tipos dos pokemons não existe necessidade de fazer essa checagem
+# novamente para saber qual ataque é mais vantajoso, só é preciso calcular o maior dano entre as moves do pokemon.
     def choose_attack_ai(self, opponent):
-        #Dumb AI
+        max_damage = 0
         if self.move1.remaining_pp > 0:
-            return 1
+            current_damage = calculate_damage(self, self.move1, opponent)
+            if current_damage > max_damage: 
+                max_damage = current_damage
+                return 1
         elif self.move2.remaining_pp > 0:
-            return 2
+            current_damage = calculate_damage(self, self.move2, opponent)
+            if current_damage > max_damage: 
+                max_damage = current_damage
+                return 2
         elif self.move3.remaining_pp > 0:
-            return 3
+            current_damage = calculate_damage(self, self.move3, opponent)
+            if current_damage > max_damage: 
+                max_damage = current_damage
+                return 3
         elif self.move4.remaining_pp > 0:
-            return 4
+            current_damage = calculate_damage(self, self.move4, opponent)
+            if current_damage > max_damage:
+                max_damage = current_damage
+                return 4
         else:
             return 0
+        
 
 
     def calculate_damage(self, move, opponent):
