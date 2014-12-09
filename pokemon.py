@@ -492,3 +492,34 @@ class Pokemon(object):
         damage = int(((((2 * level) + 10) / 250) * (opponent.attack / opponent.defense) * move.move_power + 2) * modifier)
 
         return damage
+
+
+
+
+        #We are not considering critical hit and any other calculus that is reliable on randoms
+        def calculate_damage_ai(self, move, opponent):
+        if self.type1 == move.move_type or self.type2 == move.move_type: stab = 1.5
+        else: stab = 1.0
+        level = self.level
+
+        #Find the modifier type
+        m = move.move_type
+        n = opponent.type1
+        l = opponent.type2
+        type_index = poketype()
+        type_chart = poke_type_chart()
+        for i in type_index:
+            if i==m: index_attack = int(type_index[i])
+            if i==n: index_defender1 = int(type_index[i])
+            if l != 'Blank' and i==l: index_defender2 = type_index[i]
+
+        type1_damage = type_chart[index_attack][index_defender1]
+        if l != 'Blank': type2_damage = type_chart[index_attack][index_defender2]
+        else: type2_damage = 0
+
+        type_damage = type1_damage + type2_damage
+
+        modifier = stab * type_damage
+        damage = int(((((2 * level) + 10) / 250) * (opponent.attack / opponent.defense) * move.move_power + 2) * modifier)
+
+        return damage
