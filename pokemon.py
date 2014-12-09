@@ -439,22 +439,22 @@ class Pokemon(object):
         max_damage = 0
         option = 0
         if self.move1.remaining_pp > 0:
-            current_damage = self.calculate_damage(self.move1, opponent)
+            current_damage = self.calculate_damage_ai(self.move1, opponent)
             if current_damage > max_damage:
                 max_damage = current_damage
                 option = self.move1.move_id
         if self.move2.remaining_pp > 0:
-            current_damage = self.calculate_damage(self.move2, opponent)
+            current_damage = self.calculate_damage_ai(self.move2, opponent)
             if current_damage > max_damage:
                 max_damage = current_damage
                 option = self.move2.move_id
         if self.move3.remaining_pp > 0:
-            current_damage = self.calculate_damage(self.move3, opponent)
+            current_damage = self.calculate_damage_ai(self.move3, opponent)
             if current_damage > max_damage:
                 max_damage = current_damage
                 option = self.move3.move_id
         if self.move4.remaining_pp > 0:
-            current_damage = self.calculate_damage(self.move4, opponent)
+            current_damage = self.calculate_damage_ai(self.move4, opponent)
             if current_damage > max_damage:
                 max_damage = current_damage
                 option = self.move4.move_id
@@ -492,9 +492,6 @@ class Pokemon(object):
         damage = int(((((2 * level) + 10) / 250) * (opponent.attack / opponent.defense) * move.move_power + 2) * modifier)
 
         return damage
-
-
-
 
         #We are not considering critical hit and any other calculus that is reliable on randoms
         def calculate_damage_ai(self, move, opponent):
