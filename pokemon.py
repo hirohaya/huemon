@@ -305,7 +305,7 @@ class Pokemon(object):
 
 
     def perform_attack_client_ai(self, opponent):
-        option = self.choose_attack_ai(opponent)
+        option = str(self.choose_attack_ai(opponent))
         if option == '1' and self.move1.remaining_pp > 0:
             print(self.name + " is using " + self.move1.move_name + "!")
             self.move1.remaining_pp -= 1
