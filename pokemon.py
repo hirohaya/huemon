@@ -440,24 +440,24 @@ class Pokemon(object):
             current_damage = calculate_damage(self, self.move1, opponent)
             if current_damage > max_damage:
                 max_damage = current_damage
-                return 1
-        elif self.move2.remaining_pp > 0:
+                opcao = self.move1_id
+        if self.move2.remaining_pp > 0:
             current_damage = calculate_damage(self, self.move2, opponent)
             if current_damage > max_damage:
                 max_damage = current_damage
-                return 2
-        elif self.move3.remaining_pp > 0:
+                opcao = self.move2_id
+        if self.move3.remaining_pp > 0:
             current_damage = calculate_damage(self, self.move3, opponent)
             if current_damage > max_damage:
                 max_damage = current_damage
-                return 3
-        elif self.move4.remaining_pp > 0:
+                opcao = self.move3_id
+        if self.move4.remaining_pp > 0:
             current_damage = calculate_damage(self, self.move4, opponent)
             if current_damage > max_damage:
                 max_damage = current_damage
-                return 4
-        else:
-            return 0
+                opcao = self.move4_id
+        
+        return opcao
 
 
     def calculate_damage(self, move, opponent):
