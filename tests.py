@@ -39,8 +39,8 @@ class TestPokemonTextGame(unittest.TestCase):
 
     def test_calculate_damage(self):
         expected_minimum_modifier = 0
-        expected_maximum_modifier = 1.5 * 4 * 2 * 1 
-    
+        expected_maximum_modifier = 1.5 * 4 * 2 * 1
+
         expected_minimum_damage = int(((((2 * self.pokemon1.level) + 10) / 250) * (self.pokemon1.attack / self.pokemon2.defense) * self.pokemon1.move1.move_power + 2) * expected_minimum_modifier)
         expected_maximum_damage = int(((((2 * self.pokemon1.level) + 10) / 250) * (self.pokemon1.attack / self.pokemon2.defense) * self.pokemon1.move1.move_power + 2) * expected_maximum_modifier)
         #The damage must be inside a given interval, delimited by the maximum and minimum values of the modifier (as the rest of the formula is static to the respectives pokemons involved)

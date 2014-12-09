@@ -4,25 +4,25 @@ Para executar o programa serão necessários:
  -Pip (https://pypi.python.org/pypi/pip)
  -Flask (http://flask.pocoo.org/)
  -Requests (http://docs.python-requests.org/en/latest/)
- 
+
 Instalação:
-	
+
  -Python 3
-	$ sudo apt-get install python3
- 
+    $ sudo apt-get install python3
+
  -Pip
-	$ sudo python get-pip.py
+    $ sudo python get-pip.py
 
  -Flask
-	>Linux
-		$ sudo easy_install virtualenv
-					ou
-		$ sudo pip install virtualenv
-	
-	>Ubuntu
-		$ sudo apt-get install python-virtualenv
-		
+    >Linux
+        $ sudo easy_install virtualenv
+                    ou
+        $ sudo pip install virtualenv
+
+    >Ubuntu
+        $ sudo apt-get install python-virtualenv
+
  -Requests
-		$ pip install requests
-				ou
-		$ easy_install requests (não recomendado)
+        $ pip install requests
+                ou
+        $ easy_install requests (não recomendado)

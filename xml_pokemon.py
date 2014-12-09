@@ -241,7 +241,7 @@ def parse(xml):
                 client_pokemon_move0_power = int(child.text)
                 continue
             if child.tag == "accuracy" and skill == 0:
-                client_pokemon_move0_accuracy = float(child.text) 
+                client_pokemon_move0_accuracy = float(child.text)
                 continue
             if child.tag == "power_points" and skill == 0:
                 client_pokemon_move0_power_points = int(child.text)
@@ -465,7 +465,7 @@ def parse(xml):
                 server_pokemon_parsed = True
                 continue
     pokemon1 = Pokemon(client_pokemon_name, client_pokemon_type1, client_pokemon_type2, client_pokemon_health, client_pokemon_level, client_pokemon_attack, client_pokemon_defense, client_pokemon_special, client_pokemon_speed, client_pokemon_move0, client_pokemon_move1, client_pokemon_move2, client_pokemon_move3, client_pokemon_move4)
-    if server_pokemon_parsed == True: 
+    if server_pokemon_parsed == True:
         pokemon2 = Pokemon(server_pokemon_name, server_pokemon_type1, server_pokemon_type2, server_pokemon_health, server_pokemon_level, server_pokemon_attack, server_pokemon_defense, server_pokemon_special, server_pokemon_speed, server_pokemon_move0, server_pokemon_move1, server_pokemon_move2, server_pokemon_move3, server_pokemon_move4)
     else:
         pokemon2 = None

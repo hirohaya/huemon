@@ -2,13 +2,13 @@
 <battle_state>
   <pokemon>
     <name>Mew</name>
-    <level>99</level>
+    <level>21</level>
     <attributes>
-      <health>100</health>
-      <attack>20</attack>
-      <defense>20</defense>
-      <speed>20</speed>
-      <special>20</special>
+      <health>0</health>
+      <attack>16</attack>
+      <defense>13</defense>
+      <speed>10</speed>
+      <special>11</special>
     </attributes>
     <type>Psychic/Blank</type>
     <attacks>
@@ -19,28 +19,72 @@
       <accuracy>1.0</accuracy>
       <power_points>1</power_points>
       <id>1</id>
+      <name>Slam</name>
+      <type>Normal</type>
+      <power>80</power>
+      <accuracy>0.75</accuracy>
+      <power_points>20</power_points>
+      <id>2</id>
+      <name>Take Down</name>
+      <type>Normal</type>
+      <power>90</power>
+      <accuracy>0.85</accuracy>
+      <power_points>20</power_points>
+      <id>3</id>
       <name>Psychic</name>
       <type>Psychic</type>
       <power>90</power>
       <accuracy>1.0</accuracy>
       <power_points>10</power_points>
-      <id>2</id>
-      <name>Psybeam</name>
-      <type>Psybeam</type>
-      <power>65</power>
-      <accuracy>1.0</accuracy>
-      <power_points>20</power_points>
-      <id>3</id>
-      <name>Confusion</name>
-      <type>Psychic</type>
+      <id>4</id>
+      <name>Tackle</name>
+      <type>Normal</type>
+      <power>35</power>
+      <accuracy>0.95</accuracy>
+      <power_points>35</power_points>
+    </attacks>
+  </pokemon>
+  <pokemon>
+    <name>Pikachu</name>
+    <level>20</level>
+    <attributes>
+      <health>70</health>
+      <attack>15</attack>
+      <defense>14</defense>
+      <speed>99</speed>
+      <special>10</special>
+    </attributes>
+    <type>Electric/Blank</type>
+    <attacks>
+      <id>0</id>
+      <name>Struggle</name>
+      <type>Normal</type>
       <power>50</power>
       <accuracy>1.0</accuracy>
-      <power_points>25</power_points>
-      <id>4</id>
-      <name>Swift</name>
-      <type>Normal</type>
-      <power>60</power>
+      <power_points>1</power_points>
+      <id>1</id>
+      <name>Thunder</name>
+      <type>Electric</type>
+      <power>120</power>
+      <accuracy>0.7</accuracy>
+      <power_points>10</power_points>
+      <id>2</id>
+      <name>Thundershock</name>
+      <type>Electric</type>
+      <power>40</power>
       <accuracy>1.0</accuracy>
+      <power_points>15</power_points>
+      <id>3</id>
+      <name>Take Down</name>
+      <type>Normal</type>
+      <power>90</power>
+      <accuracy>0.85</accuracy>
+      <power_points>20</power_points>
+      <id>4</id>
+      <name>Slam</name>
+      <type>Normal</type>
+      <power>80</power>
+      <accuracy>0.75</accuracy>
       <power_points>20</power_points>
     </attacks>
   </pokemon>

@@ -13,7 +13,7 @@ class Pokemon(object):
         self.type2 = type2
         self.hp = hp
         self.level = level
-        self.attack = attack 
+        self.attack = attack
         self.defense = defense
         self.special = special
         self.speed = speed
@@ -262,7 +262,7 @@ class Pokemon(object):
                     print("\nOk! Your POKeMON has been created! Let's continue!\n\n")
                     sure = "Yes"
                     decision = "Yes"
-                    
+
                     pkmn = Pokemon(name, type1, type2, hp, level, attack, defense, special, speed, move0, move1, move2, move3, move4)
                 #Troll user. You have to answer Yes or no!
                 else:
@@ -432,23 +432,23 @@ class Pokemon(object):
         print("3. "+self.move3.move_name+" ("+str(self.move3.remaining_pp)+"/"+str(self.move3.move_pp)+")")
         print("4. "+self.move4.move_name+" ("+str(self.move4.remaining_pp)+"/"+str(self.move4.move_pp)+")")
 
-# Como o cálculo do dano é feito levando em conta os tipos dos pokemons não existe necessidade de fazer essa checagem
-# novamente para saber qual ataque é mais vantajoso, só é preciso calcular o maior dano entre as moves do pokemon.
+    # Como o cálculo do dano é feito levando em conta os tipos dos pokemons não existe necessidade de fazer essa checagem
+    # novamente para saber qual ataque é mais vantajoso, só é preciso calcular o maior dano entre as moves do pokemon.
     def choose_attack_ai(self, opponent):
         max_damage = 0
         if self.move1.remaining_pp > 0:
             current_damage = calculate_damage(self, self.move1, opponent)
-            if current_damage > max_damage: 
+            if current_damage > max_damage:
                 max_damage = current_damage
                 return 1
         elif self.move2.remaining_pp > 0:
             current_damage = calculate_damage(self, self.move2, opponent)
-            if current_damage > max_damage: 
+            if current_damage > max_damage:
                 max_damage = current_damage
                 return 2
         elif self.move3.remaining_pp > 0:
             current_damage = calculate_damage(self, self.move3, opponent)
-            if current_damage > max_damage: 
+            if current_damage > max_damage:
                 max_damage = current_damage
                 return 3
         elif self.move4.remaining_pp > 0:
@@ -458,7 +458,6 @@ class Pokemon(object):
                 return 4
         else:
             return 0
-        
 
 
     def calculate_damage(self, move, opponent):
@@ -468,7 +467,7 @@ class Pokemon(object):
         #Verifies if the attack is critical
         crit = random()
         prob_crit = (self.speed/512)
-        if(prob_crit <= crit): level = (2*self.level + 5)/(self.level+5) 
+        if(prob_crit <= crit): level = (2*self.level + 5)/(self.level+5)
         else: level = self.level
 
         #Find the modifier type

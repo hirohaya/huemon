@@ -10,7 +10,7 @@ class Moves(object):
         self.move_type    = move_type
         self.move_pp      = move_pp
         self.move_power   = move_power
-        self.move_acc     = move_acc 
+        self.move_acc     = move_acc
         self.remaining_pp = remaining_pp
 
 
@@ -131,7 +131,7 @@ def move_choice(choosen_move):
     for i in moves_list:
         if i == choosen_move:
             return {i: moves_list[i]}
-    return None 
+    return None
 
 
 def move_type(move):
