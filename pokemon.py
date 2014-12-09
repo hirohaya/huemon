@@ -434,7 +434,17 @@ class Pokemon(object):
 
 
     def choose_attack_ai(self, opponent):
-        pass
+        #Dumb AI
+        if self.move1.remaining_pp > 0:
+            return 1
+        elif self.move2.remaining_pp > 0:
+            return 2
+        elif self.move3.remaining_pp > 0:
+            return 3
+        elif self.move4.remaining_pp > 0:
+            return 4
+        else:
+            return 0
 
 
     def calculate_damage(self, move, opponent):

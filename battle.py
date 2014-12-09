@@ -19,9 +19,9 @@ class Battle(object):
     def local_battle(self):
         pokemon1, pokemon2 = self.initialize_pokemons()
         print("\n\n\nLet's begin the battle!")
-        # pokemon1 should be the fastest
+        #pokemon1 should be the fastest
         if pokemon2.speed > pokemon1.speed:
-            # swap
+            #swap
             pokemon_tmp = pokemon1
             pokemon1 = pokemon2
             pokemon2 = pokemon_tmp
