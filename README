@@ -20,9 +20,4 @@ Para executar os testes:
 
 
 Considerações:
-
-    Nessa fase encontramos algumas dificuldades para lidar com o arquivos xml. Além disso tivemos muitas dúvidas com relação a comunicação com os projetos de outros grupos. Existem pontos em que convencionamos de alguma forma mas outros grupos podem fazer isso de modo diferente por que essas informações não estavam completas no enunciado.
-
-    - O enunciado não deixa explícito se o pokemon do cliente ou do servidor vem primeiro no xml. Nessa fase convencionamos que o primeiro fosse o pokemon cliente.
-    - No modo de batalha remota, devido a estrutura pedida do XML, pela falta de um campo para guardar o máximo de PP que uma skill tem, no modo de batalha está sendo impresso a quantidade de pp/quantidade de pp, ao inves de quantidade de PP/maximo de pp.
-    - enunciado não deixa explicito, quanto a etapa 3, se a IA deve ser implementada no que foi feito na etapa 1. Como só existem referências ao que foi desenvolvido na etapa 2, nós não alteramos nada da etapa 1.
+	A fase 3 foi a mais tranquila, implementamos as funções no módulo pokemon.py e fizemos os ajustes necessários para o jogo ser executado com a inteligência artificial no lugar do jogador além de implentar os testes para unidades que não tínhamos feito antes e para os métodos que foram criados ou alterados.
