@@ -20,4 +20,8 @@ Para executar os testes:
 
 
 Considerações:
-	A fase 3 foi a mais tranquila, implementamos as funções no módulo pokemon.py e fizemos os ajustes necessários para o jogo ser executado com a inteligência artificial no lugar do jogador além de implentar os testes para unidades que não tínhamos feito antes e para os métodos que foram criados ou alterados.
+	A fase 3 foi a mais tranquila, implementamos as funções no módulo pokemon.py e fizemos os ajustes necessários em outros modulos para o jogo ser executado com a inteligência artificial no lugar do jogador além de implentar testes para o que foi criado.
+
+    - No modo de batalha remota, devido a estrutura pedida do XML, pela falta de um campo para guardar o máximo de PP que uma skill tem, no modo de batalha está sendo impressa a quantidade de pp/quantidade de pp, ao inves de quantidade de PP/maximo de pp.
+    - O enunciado não deixa explicito, quanto a etapa 3, se a IA deve ser implementada no que foi feito na etapa 1. Como só existem referências ao que foi desenvolvido na etapa 2, nós não alteramos nada da etapa 1.
+    - Como muitas funções são essencialmente a mesma, mudando apenas um print de notificação para o jogador e a contagem dos PPs (no caso do servidor e no cliente), então um teste de uma função de ataque equivale virtualmente ao teste das outras funções de ataque.
