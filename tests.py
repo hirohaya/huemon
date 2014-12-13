@@ -29,7 +29,7 @@ class TestPokemonTextGame(unittest.TestCase):
 
 
     def test_is_defeated(self):
-       #Defeated
+        #Defeated
         self.pokemon1.hp = 0
         self.assertEqual(self.pokemon1.is_defeated(), True)
         #Not defeated
@@ -47,10 +47,12 @@ class TestPokemonTextGame(unittest.TestCase):
         self.assertGreaterEqual(self.pokemon1.calculate_damage(self.pokemon1.move1, self.pokemon2), expected_minimum_damage)
         self.assertLessEqual(self.pokemon1.calculate_damage(self.pokemon1.move1, self.pokemon2), expected_maximum_damage)
 
+
     #We know that move1 is Psychic and between pokemon1 and pokemon2, this is the strongest attack, 67.5 attack damage after modifiers applied
     #choose_attack_ai returns a move_id so we compare directely with move1.move_id
     def test_choose_attack_ai(self):
         self.assertEqual(self.pokemon1.choose_attack_ai(self.pokemon2), self.move1.move_id)
+
 
     #Once we know the type of both pokemons and their modifier, we can do a direct calculation of the damage
     #In this case, the selected attack is Psychic and it has an 90 atk base
@@ -60,6 +62,7 @@ class TestPokemonTextGame(unittest.TestCase):
     def test_calculate_damage_ai(self):
         expected_damage_ai = int(((((2 * self.pokemon1.level) + 10) / 250) * (self.pokemon1.attack / self.pokemon2.defense) * self.pokemon1.move1.move_power + 2) * .75)
         self.assertEqual(self.pokemon1.calculate_damage_ai(self.move1, self.pokemon2), expected_damage_ai)
+
 
 if __name__ == '__main__':
     unittest.main()
